@@ -32,6 +32,13 @@ function switchView(viewId) {
     initCompetitorChart();
     window.competitorChartInited = true;
   }
+
+  // Map Resize Fix
+  if (viewId === "dashboard" && window.map) {
+    setTimeout(() => {
+      window.map.invalidateSize();
+    }, 100);
+  }
 }
 
 // Chart.js Init
@@ -80,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { position: "top" } },
+      plugins: { legend: { display: false } },
       scales: { x: { grid: { display: false } } },
     },
   });
@@ -88,9 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Live Stream Sim
   const streamContainer = document.getElementById("streamList");
     const comments = [
-        { text: "Pelayanan makin cepat! #SlemanSembada", sentiment: "positive", user: "@warga_sleman" },
-        { text: "Antrian puskesmas panjang", sentiment: "negative", user: "@budi_santoso" },
-        { text: "Jalan kaliurang sudah mulus", sentiment: "positive", user: "@jogja_update" }
+        { text: "Golkar terus berkarya untuk rakyat! #GolkarMenang", sentiment: "positive", user: "@kuning_sejati" },
+        { text: "Harga pupuk di Jatim tolong dikawal", sentiment: "negative", user: "@petani_muda" },
+        { text: "Airlangga dampingi UMKM naik kelas", sentiment: "positive", user: "@umkm_bangkit" }
     ];
 
   setInterval(() => {
@@ -102,6 +109,42 @@ document.addEventListener("DOMContentLoaded", function () {
     if (streamContainer.children.length > 8)
       streamContainer.lastElementChild.remove();
   }, 3000);
+
+  // Leaflet Map Init
+  window.map = L.map("map", {
+    zoomControl: false,
+    scrollWheelZoom: false,
+  }).setView([-2.5, 118], 5);
+
+  L.tileLayer(
+    "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+    {
+      attribution: "&copy; OpenStreetMap &copy; CARTO",
+    },
+  ).addTo(window.map);
+
+  L.control.zoom({ position: "bottomright" }).addTo(window.map);
+
+  const points = [
+    { loc: [-6.2, 106.8], val: "High", color: "#FFD700" },
+    { loc: [-7.2, 112.7], val: "High", color: "#FFD700" },
+    { loc: [-0.9, 131.2], val: "Medium", color: "#B8860B" },
+    { loc: [5.5, 95.3], val: "Medium", color: "#B8860B" },
+    { loc: [-5.1, 119.4], val: "Low", color: "#4B3A00" },
+    { loc: [-3.7, 128.1], val: "Medium", color: "#FFD700" },
+  ];
+
+  points.forEach((p) => {
+    L.circle(p.loc, {
+      color: p.color,
+      fillColor: p.color,
+      fillOpacity: 0.6,
+      radius: 120000,
+      weight: 0,
+    })
+      .addTo(window.map)
+      .bindPopup(`<b>Region Activity</b><br>Sentiment: ${p.val}`);
+  });
 });
 
 // Competitor Chart
@@ -114,21 +157,21 @@ function initCompetitorChart() {
       labels: ["Jan", "Feb", "Mar", "Apr", "May"],
       datasets: [
         {
-          label: "Pemkab Sleman",
+          label: "Partai Golkar",
           data: [75, 78, 80, 82, 85],
-          backgroundColor: "#2563EB", // Primary Blue
+          backgroundColor: "#FFD700", // Golkar Yellow
           borderRadius: 4,
         },
         {
-          label: "Kab. Bantul",
+          label: "Partai X",
           data: [70, 72, 71, 74, 76],
-          backgroundColor: "#94A3B8", // Muted
+          backgroundColor: "#334155", // Neutral Dark
           borderRadius: 4,
         },
         {
-          label: "Kab. Gunungkidul",
+          label: "Partai Y",
           data: [65, 68, 66, 69, 70],
-          backgroundColor: "#CBD5E1", // Light Muted
+          backgroundColor: "#94A3B8", // Neutral Light
           borderRadius: 4,
         },
       ],
@@ -137,7 +180,7 @@ function initCompetitorChart() {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { position: "top" },
+        legend: { display: false },
         tooltip: {
           mode: "index",
           intersect: false,

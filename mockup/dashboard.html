@@ -3,25 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleman Smart Regency - Command Center</title>
+    <title>Golkar Digital Command Center - Home</title>
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="icon" href="assets/logo.jpg" />
+    <link rel="icon" href="assets/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <!-- Sidebar -->
     <aside>
       <div class="logo">
-        <img src="assets/logo.jpg" alt="PemKab Sleman Logo" />
+        <img src="assets/logo.png" alt="Partai Golkar Logo" />
         <div class="logo-text">
-          <div style="font-size: 1.2rem; font-weight: 800; line-height: 1.1">
-            PEMKAB<br />SLEMAN
+          <div
+            style="
+              font-size: 1.2rem;
+              font-weight: 800;
+              line-height: 1.1;
+              color: #000;
+            "
+          >
+            PARTAI<br />GOLKAR
           </div>
-          <div style="font-size: 0.9rem; font-weight: 400; color: #e0f2fe">
+          <div style="font-size: 0.9rem; font-weight: 400; color: #4b3a00">
             Command Center
           </div>
         </div>
@@ -78,13 +91,13 @@
         <div style="display: flex; flex-direction: column">
           <h2
             id="page-title"
-            style="font-size: 1.2rem; font-weight: 800; color: #ffffff"
+            style="font-size: 1.2rem; font-weight: 800; color: #000000"
           >
             Situation Room
           </h2>
           <span
             id="current-date"
-            style="font-size: 0.8rem; color: #e0f2fe; font-weight: 500"
+            style="font-size: 0.8rem; color: #4b3a00; font-weight: 500"
           ></span>
         </div>
 
@@ -92,19 +105,19 @@
           <div class="ticker">
             <span
               ><i class="fa-solid fa-arrow-trend-up text-success"></i> Trending:
-              #WisataKaliurang (High Vol)</span
+              #GolkarMenang (High Vol)</span
             >
             <span
               ><i class="fa-solid fa-arrow-trend-up text-success"></i> Trending:
-              #SlemanSembada (Medium Vol)</span
+              #IndonesiaMaju (Medium Vol)</span
             >
             <span
-              ><i class="fa-solid fa-bolt text-danger"></i> Alert: Status Merapi
-              Waspada Level 3</span
+              ><i class="fa-solid fa-bolt text-danger"></i> Alert: Negative
+              Sentiment Rising in West Java</span
             >
             <span
               ><i class="fa-solid fa-trophy text-primary"></i> Achievement:
-              Indeks Kepuasan Masyarakat 89.5%</span
+              Digital Outreach +45.8%</span
             >
           </div>
         </div>
@@ -127,15 +140,15 @@
             <i class="fa-solid fa-display"></i> WAR ROOM
           </button>
           <div style="text-align: right">
-            <div style="font-weight: 700; font-size: 0.9rem; color: #ffffff">
-              Admin Pusat
+            <div style="font-weight: 700; font-size: 0.9rem; color: #000000">
+              Media Center
             </div>
-            <div style="font-size: 0.75rem; color: #e0f2fe">
-              Diskominfo Team
+            <div style="font-size: 0.75rem; color: #4b3a00">
+              National Digital Team
             </div>
           </div>
           <div class="avatar">
-            <img src="assets/logo.jpg" style="width: 25px" />
+            <img src="assets/logo.png" style="width: 25px" />
           </div>
         </div>
       </header>
@@ -203,7 +216,9 @@
                   >
                 </div>
               </div>
-              <canvas id="mainChart" height="250"></canvas>
+              <div style="flex: 1; min-height: 250px; position: relative">
+                <canvas id="mainChart"></canvas>
+              </div>
             </div>
 
             <div class="live-stream">
@@ -213,55 +228,25 @@
               <div class="stream-list" id="streamList"></div>
             </div>
 
-            <div class="map-container">
+            <div class="map-container" style="padding: 0; min-height: 400px">
               <h3
                 style="
                   font-size: 1rem;
                   position: absolute;
                   top: 20px;
                   left: 20px;
-                  z-index: 2;
+                  z-index: 1000;
                   color: #1a1a1a;
+                  background: rgba(255, 255, 255, 0.8);
+                  padding: 5px 12px;
+                  border-radius: 6px;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  font-weight: 700;
                 "
               >
                 Regional Heatmap
               </h3>
-              <div
-                style="
-                  width: 100%;
-                  height: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  background: #f8fafc;
-                "
-              >
-                <i
-                  class="fa-solid fa-map"
-                  style="font-size: 10rem; opacity: 0.1"
-                ></i>
-                <div
-                  class="heatmap-dot"
-                  style="
-                    top: 60%;
-                    left: 30%;
-                    width: 40px;
-                    height: 40px;
-                    background: rgba(255, 205, 0, 0.4);
-                  "
-                ></div>
-                <div
-                  class="heatmap-dot"
-                  style="
-                    top: 65%;
-                    left: 70%;
-                    width: 60px;
-                    height: 60px;
-                    background: rgba(4, 120, 87, 0.4);
-                    animation-duration: 1.5s;
-                  "
-                ></div>
-              </div>
+              <div id="map" style="width: 100%; height: 100%; z-index: 1"></div>
             </div>
           </div>
         </section>
@@ -278,11 +263,11 @@
                   Regional Comparative Analysis
                 </h3>
                 <select class="form-select" style="width: 150px">
-                  <option>Sleman</option>
-                  <option>Bantul</option>
-                  <option>Kota Yogyakarta</option>
-                  <option>Kulon Progo</option>
-                  <option>Gunungkidul</option>
+                  <option>Jawa Barat</option>
+                  <option>Jawa Tengah</option>
+                  <option>Jawa Timur</option>
+                  <option>DKI Jakarta</option>
+                  <option>Banten</option>
                 </select>
               </div>
               <div style="height: 300px; width: 100%">
@@ -298,22 +283,22 @@
               margin-top: 24px;
             "
           >
-            <div class="stat-card" style="border-top: 4px solid #2563eb">
-              <div class="stat-label">Kab. Sleman (Kita)</div>
+            <div class="stat-card" style="border-top: 4px solid #ffd700">
+              <div class="stat-label">Prov. Jawa Barat</div>
               <div class="stat-value">34.2%</div>
               <div class="stat-trend text-success">
                 <i class="fa-solid fa-caret-up"></i> +1.5%
               </div>
             </div>
-            <div class="stat-card" style="border-top: 4px solid #1e40af">
-              <div class="stat-label">Kab. Bantul</div>
+            <div class="stat-card" style="border-top: 4px solid #000000">
+              <div class="stat-label">Prov. Jawa Tengah</div>
               <div class="stat-value">28.1%</div>
               <div class="stat-trend text-danger">
                 <i class="fa-solid fa-caret-down"></i> -0.8%
               </div>
             </div>
-            <div class="stat-card" style="border-top: 4px solid #f59e0b">
-              <div class="stat-label">Kab. Gunungkidul</div>
+            <div class="stat-card" style="border-top: 4px solid #b8860b">
+              <div class="stat-label">Prov. Jawa Timur</div>
               <div class="stat-value">18.5%</div>
               <div class="stat-trend text-muted">
                 <i class="fa-solid fa-minus"></i> 0.0%
@@ -330,7 +315,7 @@
                 <h2
                   style="font-size: 1.5rem; margin-bottom: 5px; color: #1a1a1a"
                 >
-                  Alert: Lonjakan Pasien RSUD
+                  Alert: Isu Kelangkaan Pupuk Jatim
                 </h2>
                 <div class="text-danger" style="font-size: 0.9rem">
                   <i class="fa-solid fa-circle-exclamation"></i> Critical Alert
@@ -341,7 +326,7 @@
               <div style="display: flex; gap: 10px">
                 <button
                   class="btn-generate"
-                  onclick="alert('Laporan diteruskan ke Dinas Kesehatan')"
+                  onclick="alert('Laporan diteruskan ke Desk Politik Nasional')"
                   style="background: #fff; border: 1px solid #ccc; color: #333"
                 >
                   <i class="fa-solid fa-share-nodes"></i> Eskalasi
@@ -387,7 +372,7 @@
                       10:00 AM
                     </div>
                     <div style="font-weight: 600">
-                      Keluhan Antrian Panjang (+40%)
+                      Keluhan Harga Pupuk Naik (+40%)
                     </div>
                   </div>
                   <div style="margin-bottom: 20px; position: relative">
@@ -405,7 +390,7 @@
                       10:45 AM
                     </div>
                     <div style="font-weight: 600">
-                      Akun @warga_sleman memposting foto antrian RSUD
+                      Akun @petani_bersatu memposting foto gudang kosong
                     </div>
                   </div>
                   <div style="margin-bottom: 0px; position: relative">
@@ -415,7 +400,7 @@
                         left: -26px;
                         width: 10px;
                         height: 10px;
-                        background: #2563eb;
+                        background: var(--primary-color);
                         border-radius: 50%;
                       "
                     ></div>
@@ -433,10 +418,10 @@
                   background: #fffbe6;
                   padding: 20px;
                   border-radius: 12px;
-                  border: 1px solid #2563eb;
+                  border: 1px solid var(--primary-color);
                 "
               >
-                <h4 style="margin-bottom: 15px; color: #1e40af">
+                <h4 style="margin-bottom: 15px; color: #b8860b">
                   <i class="fa-solid fa-gavel"></i> Automated Disposisi
                 </h4>
                 <p style="font-size: 0.9rem; margin-bottom: 15px">
@@ -448,9 +433,9 @@
                     >Penanggung Jawab</label
                   >
                   <select class="form-select">
-                    <option selected>Kepala Dinas Kesehatan</option>
-                    <option>Humas Pemkab</option>
-                    <option>Tim Respon Cepat</option>
+                    <option selected>Departemen Kajian Strategis</option>
+                    <option>Humas DPP Golkar</option>
+                    <option>Tim Respon Digital</option>
                   </select>
                 </div>
 
@@ -459,7 +444,7 @@
                     >Instruksi Default</label
                   >
                   <textarea class="form-input" rows="3">
-Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penambahan loket. Lapor progress.</textarea
+Segera koordinasi dengan DPD Jawa Timur. Siapkan rilis bantuan pupuk dan dampingi petani di lapangan. Lapor progress.</textarea
                   >
                 </div>
 
@@ -506,24 +491,25 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
                   padding: 15px;
                   border-radius: 8px;
                   margin-bottom: 15px;
-                  border-left: 4px solid #2563eb;
+                  border-left: 4px solid var(--primary-color);
                 "
               >
                 <div class="flex-between">
-                  <div style="font-weight: 700">Sosialisasi #SlemanSehat</div>
+                  <div style="font-weight: 700">Sosialisasi #GolkarPeduli</div>
                   <span
                     style="
                       font-size: 0.7rem;
-                      background: #dcfce7;
-                      color: #166534;
+                      background: #e6c200;
+                      color: #000;
                       padding: 2px 8px;
                       border-radius: 4px;
+                      font-weight: 700;
                     "
                     >Active</span
                   >
                 </div>
                 <p style="font-size: 0.9rem; margin: 5px 0; color: #64748b">
-                  Target: 5.000 Shares • Reward: Piagam Bupati
+                  Target: 50.000 Shares • Reward: Top Influencer Badge
                 </p>
                 <div
                   style="
@@ -535,7 +521,7 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
                 >
                   <div
                     style="
-                      background: #2563eb;
+                      background: #ffd700;
                       width: 75%;
                       height: 100%;
                       border-radius: 3px;
@@ -559,20 +545,24 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
                 "
               >
                 <div class="flex-between">
-                  <div style="font-weight: 700">Klarifikasi Hoax Vaksin</div>
+                  <div style="font-weight: 700">
+                    Counter Isu Dinasti Politik
+                  </div>
                   <span
                     style="
                       font-size: 0.7rem;
-                      background: #dcfce7;
-                      color: #166534;
+                      background: #fee2e2;
+                      color: #991b1b;
                       padding: 2px 8px;
                       border-radius: 4px;
+                      font-weight: 700;
                     "
                     >Urgent</span
                   >
                 </div>
                 <p style="font-size: 0.9rem; margin: 5px 0; color: #64748b">
-                  Target: Reply & Clarification • Reward: 100 Poin
+                  Target: Clarification & Meritocracy Highlight • Reward: 100
+                  Poin
                 </p>
                 <div
                   style="
@@ -626,16 +616,16 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
                 </tr>
                 <tr>
                   <td style="padding: 10px">
-                    <i class="fa-solid fa-medal text-warning"></i> 1
+                    <i class="fa-solid fa-medal" style="color: #ffd700"></i> 1
                   </td>
-                  <td>Budi Cyber</td>
+                  <td>Budi Digital</td>
                   <td>15,400</td>
                 </tr>
                 <tr>
                   <td style="padding: 10px">
                     <i class="fa-solid fa-medal" style="color: #c0c0c0"></i> 2
                   </td>
-                  <td>Siti Buzzer</td>
+                  <td>Relawan Kuning</td>
                   <td>12,250</td>
                 </tr>
                 <tr>
@@ -672,9 +662,9 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
               <div class="form-group">
                 <label class="form-label">Select Issue</label>
                 <select class="form-select">
-                  <option>Antrian RSUD (High Priority)</option>
-                  <option>Penerimaan Siswa Baru</option>
-                  <option>Potensi Wisata Kaliurang</option>
+                  <option>Kelangkaan Pupuk Jatim (High Priority)</option>
+                  <option>RUU Ekonomi Rakyat</option>
+                  <option>Kampanye Nasional #GolkarMenang</option>
                 </select>
               </div>
               <div class="form-group">
@@ -767,13 +757,13 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
                       "
                     >
                       <span class="text-warning">[0-3s Hook]</span> (Visual:
-                      Warga sakit) "Antrian RSUD panjang? Tenang, Pemkab Sleman
+                      Petani mengeluh) "Harga pupuk makin mahal? Tenang, Golkar
                       punya solusinya!"<br /><br />
-                      <span class="text-warning">[Body]</span> "Gak pake lama!
-                      Hari ini sistem pendaftaran online kita optimalkan. Bukti
-                      Sleman Smart Regency!"<br /><br />
+                      <span class="text-warning">[Body]</span> "Gak cuma janji!
+                      Hari ini tim kita kawal langsung distribusi pupuk ke
+                      petani. Bukti Golkar berkarya!"<br /><br />
                       <span class="text-warning">[CTA]</span> "Komen daerah mana
-                      lagi yang butuh perbaikan? #SlemanMelayani"
+                      lagi yang butuh pendampingan? #GolkarPeduli"
                     </div>
                   </div>
                 </div>
@@ -842,7 +832,7 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
                 "
               >
                 <div class="flex-between">
-                  <h4 style="margin: 0">@pemkab_sleman</h4>
+                  <h4 style="margin: 0">@golkar_pusat</h4>
                   <span class="text-success">Ally</span>
                 </div>
               </div>
@@ -889,7 +879,7 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
                 <div
                   style="
                     height: 150px;
-                    background: #2563eb;
+                    background: var(--primary-color);
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -1028,6 +1018,11 @@ Segera cek lapangan di RSUD Sleman. Koordinasi dengan Direktur RSUD untuk penamb
       </div>
     </main>
 
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <script src="js/script.js"></script>
   </body>
 </html>

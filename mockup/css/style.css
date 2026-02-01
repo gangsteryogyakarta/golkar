@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 :root {
-    --bg-color: #F0F9FF; /* Light Blue tint */
+    --bg-color: #FFFDF0; /* Light Gold tint */
     --surface-color: #FFFFFF;
-    --surface-hover: #E0F2FE;
+    --surface-hover: #FFFBEB;
     --border-color: #E2E8F0;
-    --primary-color: #2563EB; /* Blue 600 */
-    --primary-dark: #1D4ED8; /* Blue 700 */
-    --secondary-color: #0EA5E9; /* Sky 500 */
+    --primary-color: #FFD700; /* Golkar Yellow */
+    --primary-dark: #E6C200; /* Darker Gold */
+    --secondary-color: #000000; /* Black for contrast */
     --text-main: #0F172A;
     --text-muted: #64748B;
     --success: #16A34A;
@@ -31,8 +31,8 @@ body {
   font-family: "Inter", sans-serif;
   background-color: var(--bg-color);
     background-image: 
-        radial-gradient(circle at 5% 5%, rgba(37, 99, 235, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 95% 95%, rgba(37, 99, 235, 0.05) 0%, transparent 20%);
+        radial-gradient(circle at 5% 5%, rgba(255, 215, 0, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 95% 95%, rgba(255, 215, 0, 0.05) 0%, transparent 20%);
     color: var(--text-main);
   height: 100vh;
   overflow: hidden;
@@ -77,7 +77,7 @@ aside {
   display: flex;
   flex-direction: column;
   padding: 24px;
-    background: linear-gradient(135deg, #1E40AF 0%, #172554 100%); /* Blue gradients */
+    background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%); /* Golkar Gold gradients */
     border-right: 1px solid rgba(0, 0, 0, 0.05);
     z-index: 10;
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
@@ -123,20 +123,20 @@ aside {
   display: flex;
   align-items: center;
   gap: 12px;
-    color: #DBEAFE;
+    color: #453200; /* Dark Brown for readability */
     font-weight: 600;
     border-left: 4px solid transparent;
 }
 
 .nav-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.05);
+    color: #000000;
 }
 
 .nav-item.active {
-    background: #FFFFFF;
-    color: #1E40AF;
-    border-left-color: #60A5FA;
+    background: #000000;
+    color: #FFD700;
+    border-left-color: #B8860B;
     font-weight: 700;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
@@ -164,7 +164,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-    background: linear-gradient(90deg, #1E40AF 0%, #2563EB 100%);
+    background: linear-gradient(90deg, #FFD700 0%, #E6C200 100%);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
@@ -223,7 +223,7 @@ header {
   width: 42px;
   height: 42px;
   background: #ffffff;
-    color: #1E40AF;
+    color: #B8860B;
   border: 2px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 50%;
@@ -287,7 +287,7 @@ header {
   background: linear-gradient(
     135deg,
     transparent 50%,
-    rgba(37, 99, 235, 0.1) 50%
+    rgba(255, 215, 0, 0.1) 50%
   );
   pointer-events: none;
 }
@@ -340,7 +340,7 @@ header {
 .dashboard-main {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 400px 300px;
+  grid-template-rows: minmax(400px, auto) 300px;
   gap: 24px;
 }
 
@@ -350,6 +350,8 @@ header {
   padding: 24px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
 }
 
 .live-stream {
@@ -458,7 +460,7 @@ header {
 .form-select:focus,
 .form-input:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
 }
 
 .btn-generate {
@@ -470,19 +472,19 @@ header {
   font-weight: 700;
   cursor: pointer;
   font-size: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
   transition: all 0.2s;
 }
 
 .btn-generate:hover {
-  background: #1D4ED8;
+  background: #E6C200;
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
 .script-box {
-  background: #EFF6FF; /* Very light blue */
-  border: 1px solid #BFDBFE;
+  background: #FFFBEB; /* Very light yellow */
+  border: 1px solid #FEF3C7;
   border-radius: 8px;
   padding: 24px;
   margin-top: 16px;
@@ -490,7 +492,7 @@ header {
 
 .script-label {
   font-size: 0.75rem;
-  color: #1E40AF;
+  color: #B8860B;
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 6px;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Sleman Smart Regency</title>
+    <title>Login - Golkar Digital Command Center</title>
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -11,9 +11,11 @@
     />
     <style>
       :root {
-        --glass-bg: rgba(255, 255, 255, 0.15);
-        --glass-border: rgba(255, 255, 255, 0.2);
+        --glass-bg: rgba(255, 255, 255, 0.2);
+        --glass-border: rgba(255, 255, 255, 0.3);
         --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        --golkar-yellow: #FFD700;
+        --golkar-gold: #B8860B;
       }
 
       body {
@@ -37,8 +39,8 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(15, 23, 42, 0.6); /* Dark Blue Overlay */
-        backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0.7); /* Darker Overlay for Gold Contrast */
+        backdrop-filter: blur(8px);
         z-index: 1;
       }
 
@@ -70,13 +72,13 @@
       }
 
       .logo-large img {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         object-fit: cover;
         border-radius: 50%;
         margin-bottom: 25px;
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border: 4px solid var(--golkar-yellow);
+        box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
       }
 
       .system-title {
@@ -140,24 +142,24 @@
       .btn-login {
         width: 100%;
         padding: 16px;
-        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
         border: none;
         border-radius: 12px;
-        color: #ffffff;
-        font-weight: 600;
+        color: #000000;
+        font-weight: 800;
         font-size: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
         margin-top: 20px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
       }
 
       .btn-login:hover {
-        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        background: linear-gradient(135deg, #E6C200 0%, #996A13 100%);
         transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
       }
 
       .footer-text {
@@ -172,10 +174,10 @@
   <body>
     <div class="login-container">
       <div class="logo-large">
-        <img src="assets/logo.jpg" alt="PemKab Sleman Logo" />
+        <img src="assets/logo.png" alt="Partai Golkar Logo" />
       </div>
-      <h1 class="system-title">PEMKAB SLEMAN</br>COMMAND CENTER</h1>
-      <p class="system-subtitle">Sistem Integrasi Data Daerah</p>
+      <h1 class="system-title">PARTAI GOLKAR</br>COMMAND CENTER</h1>
+      <p class="system-subtitle">Digital Monitoring & Strategic Response</p>
 
       <form id="loginForm" onsubmit="handleLogin(event)">
         <div class="form-group">
@@ -183,7 +185,7 @@
             type="text"
             class="login-input"
             placeholder="ID Pengguna"
-            value="ADMIN-SLEMAN"
+            value="ADMIN-GOLKAR"
           />
           <i class="fa-solid fa-user"></i>
         </div>
@@ -201,8 +203,8 @@
       </form>
 
       <div class="footer-text">
-        &copy; 2024 Pemerintah Kabupaten Sleman<br />
-        Secure System Ver. 2.0 (Sembada)
+        &copy; 2024 Partai Golkar - DPP Pusat<br />
+        GDCC Alpha System Ver. 2.0 (Yellow Patrol)
       </div>
     </div>
 
