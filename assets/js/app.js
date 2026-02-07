@@ -448,7 +448,7 @@ function initWebGISScripts() {
         const map = L.map("webgis-map", {
             zoomControl: false, // Custom controls in UI
              scrollWheelZoom: false,
-        }).setView([-7.88, 110.45], 10); // DIY Center
+        }).setView([-7.8014, 110.3647], 12); // Focus on Yogyakarta City
 
         L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -470,19 +470,73 @@ function initWebGISScripts() {
             const circle = L.circle(c.loc, {
                 color: c.color,
                 fillColor: c.color,
-                fillOpacity: 1,
-                radius: c.size, // Using dynamic size for better visualization
-                weight: 2,
+                fillOpacity: 0.3, // Reduced opacity
+                radius: c.size, 
+                weight: 1,
                 className: 'pulse-marker'
             }).addTo(map);
 
             circle.bindTooltip(
-                `<div style="text-align:center; font-weight:bold; color:white; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">${c.count}</div>`, 
+                `<div style="text-align:center; font-weight:bold; color:#B45309; text-shadow: 0 0 2px white;">${c.count}</div>`, 
                 { permanent: true, direction: "center", className: "circle-label" }
             );
             
             circle.bindPopup(`<b>${c.name}</b><br>Total Pemilih: ${c.count}`);
             markers.push(circle);
+        });
+
+        // 30 Dummy Voter Data Points in Yogyakarta
+        const voterData = [
+            { name: "Budi Santoso", address: "Gondomanan, Yogyakarta", lat: -7.8020, lng: 110.3650 },
+            { name: "Siti Aminah", address: "Danurejan, Yogyakarta", lat: -7.7950, lng: 110.3700 },
+            { name: "Agus Prasetyo", address: "Gedongtengen, Yogyakarta", lat: -7.7900, lng: 110.3600 },
+            { name: "Dewi Lestari", address: "Jetis, Yogyakarta", lat: -7.7800, lng: 110.3650 },
+            { name: "Eko Kurniawan", address: "Kotagede, Yogyakarta", lat: -7.8300, lng: 110.4000 },
+            { name: "Fajar Nugroho", address: "Kraton, Yogyakarta", lat: -7.8100, lng: 110.3600 },
+            { name: "Gita Pertiwi", address: "Mantrijeron, Yogyakarta", lat: -7.8200, lng: 110.3600 },
+            { name: "Hadi Sulistyo", address: "Mergangsan, Yogyakarta", lat: -7.8150, lng: 110.3750 },
+            { name: "Indah Sari", address: "Ngampilan, Yogyakarta", lat: -7.8000, lng: 110.3550 },
+            { name: "Joko Widodo", address: "Pakualaman, Yogyakarta", lat: -7.8000, lng: 110.3750 },
+            { name: "Kartika Putri", address: "Tegalrejo, Yogyakarta", lat: -7.7850, lng: 110.3500 },
+            { name: "Lestari Handayani", address: "Umbulharjo, Yogyakarta", lat: -7.8100, lng: 110.3900 },
+            { name: "Muhammad Rizky", address: "Wirobrajan, Yogyakarta", lat: -7.8050, lng: 110.3500 },
+            { name: "Nurul Hidayah", address: "Gondokusuman, Yogyakarta", lat: -7.7900, lng: 110.3800 },
+            { name: "Oscar Pratama", address: "Gondomanan, Yogyakarta", lat: -7.8010, lng: 110.3660 },
+            { name: "Putri Ayu", address: "Danurejan, Yogyakarta", lat: -7.7960, lng: 110.3710 },
+            { name: "Qori Al-Hafiz", address: "Gedongtengen, Yogyakarta", lat: -7.7910, lng: 110.3610 },
+            { name: "Rina Wati", address: "Jetis, Yogyakarta", lat: -7.7810, lng: 110.3660 },
+            { name: "Surya Dharma", address: "Kotagede, Yogyakarta", lat: -7.8310, lng: 110.4010 },
+            { name: "Trio wibowo", address: "Kraton, Yogyakarta", lat: -7.8110, lng: 110.3610 },
+            { name: "Unggul Saputra", address: "Mantrijeron, Yogyakarta", lat: -7.8210, lng: 110.3610 },
+            { name: "Vina Panduwinata", address: "Mergangsan, Yogyakarta", lat: -7.8160, lng: 110.3760 },
+            { name: "Wahyu Setiawan", address: "Ngampilan, Yogyakarta", lat: -7.8010, lng: 110.3560 },
+            { name: "Xavier Halim", address: "Pakualaman, Yogyakarta", lat: -7.8010, lng: 110.3760 },
+            { name: "Yulia Rahman", address: "Tegalrejo, Yogyakarta", lat: -7.7860, lng: 110.3510 },
+            { name: "Zainal Abidin", address: "Umbulharjo, Yogyakarta", lat: -7.8110, lng: 110.3910 },
+            { name: "Andi Saputra", address: "Wirobrajan, Yogyakarta", lat: -7.8060, lng: 110.3510 },
+            { name: "Bayu Pradana", address: "Gondokusuman, Yogyakarta", lat: -7.7910, lng: 110.3810 },
+            { name: "Citra Kirana", address: "Sleman, Yogyakarta", lat: -7.7500, lng: 110.4000 },
+            { name: "Dimas Anggara", address: "Bantul, Yogyakarta", lat: -7.8500, lng: 110.3500 }
+        ];
+
+        // Custom Icon for Voters
+        const voterIcon = L.divIcon({
+            className: 'custom-voter-icon',
+            html: '<i class="fa-solid fa-user-circle" style="color: #B45309; font-size: 16px; background: white; border-radius: 50%; padding: 2px; border: 1px solid #B45309;"></i>',
+            iconSize: [20, 20],
+            iconAnchor: [10, 10],
+            popupAnchor: [0, -10]
+        });
+
+        voterData.forEach(voter => {
+            const marker = L.marker([voter.lat, voter.lng], { icon: voterIcon }).addTo(map);
+            marker.bindPopup(`
+                <div style="font-size: 0.9rem;">
+                    <div style="font-weight: bold; color: #1a1a1a; margin-bottom: 2px;">${voter.name}</div>
+                    <div style="color: #64748b; font-size: 0.8rem;"><i class="fa-solid fa-location-dot" style="color: #B45309; margin-right: 4px;"></i>${voter.address}</div>
+                    <div style="margin-top: 5px; font-size: 0.75rem; color: #16a34a; font-weight: 600;">Terverifikasi</div>
+                </div>
+            `);
         });
         
         // Ensure map renders properly
