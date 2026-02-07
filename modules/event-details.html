@@ -1,0 +1,207 @@
+<!-- Back Button -->
+<div style="margin-bottom: 20px">
+  <button
+    onclick="loadModule('events')"
+    class="btn-icon"
+    style="width: auto; padding: 8px 16px; border-radius: 8px; gap: 8px"
+  >
+    <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Event
+  </button>
+</div>
+
+<!-- Header -->
+<div class="flex-between" style="margin-bottom: 24px">
+  <div>
+    <h2
+      style="
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 5px;
+      "
+    >
+      Detail Event
+    </h2>
+    <p style="color: #64748b; font-size: 0.9rem">
+      Informasi detail dan link pendaftaran event.
+    </p>
+  </div>
+  <span class="badge badge-primary" style="font-size: 1rem; padding: 8px 16px"
+    >Akan Datang</span
+  >
+</div>
+
+<div class="dashboard-main" style="grid-template-columns: 2fr 1fr">
+  <!-- Main Info -->
+  <div class="chart-container" style="border-top: 4px solid #ffd700">
+    <h3 style="font-size: 1.25rem; margin-bottom: 10px">
+      Rapat Koordinasi DPD Jakarta
+    </h3>
+    <p style="color: #64748b; margin-bottom: 24px">
+      Rapat koordinasi bulanan untuk evaluasi program kerja dan persiapan
+      Pilkada.
+    </p>
+
+    <div
+      style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+      "
+    >
+      <div
+        class="stat-icon-box"
+        style="
+          justify-content: flex-start;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+        "
+      >
+        <i
+          class="fa-regular fa-calendar"
+          style="font-size: 1.2rem; margin-right: 12px; color: #f59e0b"
+        ></i>
+        <div>
+          <div style="font-size: 0.8rem; color: #64748b">Tanggal</div>
+          <div style="font-weight: 600">10 Februari 2026</div>
+        </div>
+      </div>
+      <div
+        class="stat-icon-box"
+        style="
+          justify-content: flex-start;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+        "
+      >
+        <i
+          class="fa-regular fa-clock"
+          style="font-size: 1.2rem; margin-right: 12px; color: #f59e0b"
+        ></i>
+        <div>
+          <div style="font-size: 0.8rem; color: #64748b">Waktu</div>
+          <div style="font-weight: 600">09:00 - 12:00 WIB</div>
+        </div>
+      </div>
+      <div
+        class="stat-icon-box"
+        style="
+          justify-content: flex-start;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+        "
+      >
+        <i
+          class="fa-solid fa-location-dot"
+          style="font-size: 1.2rem; margin-right: 12px; color: #f59e0b"
+        ></i>
+        <div>
+          <div style="font-size: 0.8rem; color: #64748b">Lokasi</div>
+          <div style="font-weight: 600">Kantor DPD Golkar Jakarta</div>
+        </div>
+      </div>
+      <div
+        class="stat-icon-box"
+        style="
+          justify-content: flex-start;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+        "
+      >
+        <i
+          class="fa-solid fa-building-user"
+          style="font-size: 1.2rem; margin-right: 12px; color: #f59e0b"
+        ></i>
+        <div>
+          <div style="font-size: 0.8rem; color: #64748b">Penyelenggara</div>
+          <div style="font-weight: 600">DPD Jakarta Pusat</div>
+        </div>
+      </div>
+    </div>
+
+    <h4 style="font-size: 1rem; margin-bottom: 12px">Deskripsi Lengkap</h4>
+    <p style="color: #334155; line-height: 1.6; font-size: 0.95rem">
+      Agenda ini bertujuan untuk menyamakan persepsi dan strategi pemenangan di
+      wilayah Jakarta Pusat. Seluruh kader diharapkan hadir tepat waktu dan
+      membawa laporan kinerja bulanan. Fokus utama adalah evaluasi program
+      "Golkar Menyapa" bulan Januari.
+    </p>
+  </div>
+
+  <!-- Sidebar: Registration Link -->
+  <div style="display: flex; flex-direction: column; gap: 24px">
+    <!-- Registration Card -->
+    <div
+      class="chart-container"
+      style="background: #fffbeb; border: 1px solid #fcd34d"
+    >
+      <h4 style="color: #b45309; margin-bottom: 15px">
+        <i class="fa-solid fa-share-nodes"></i> Link Pendaftaran
+      </h4>
+      <p style="font-size: 0.9rem; margin-bottom: 15px">
+        Bagikan link ini kepada calon peserta.
+      </p>
+
+      <div class="form-group" style="margin-bottom: 15px">
+        <div style="display: flex; gap: 8px">
+          <input
+            type="text"
+            class="form-input"
+            id="shareLink"
+            value="http://localhost:8000/register-event.html?event=Rapat Koordinasi DPD Jakarta"
+            readonly
+            style="font-size: 0.85rem; background: #fff"
+          />
+          <button class="btn-icon" onclick="copyLink()" title="Copy Link">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+          <button
+            class="btn-icon"
+            onclick="
+              window.open(document.getElementById('shareLink').value, '_blank')
+            "
+            title="Open Link"
+          >
+            <i class="fa-solid fa-up-right-from-square"></i>
+          </button>
+        </div>
+      </div>
+
+      <div style="font-size: 0.8rem; color: #b45309; text-align: center">
+        <i class="fa-solid fa-circle-info"></i> Klik tombol di kanan untuk
+        membuka form pendaftaran.
+      </div>
+    </div>
+
+    <!-- Participants Stats -->
+    <div class="chart-container">
+      <h4 style="margin-bottom: 15px">Status Peserta</h4>
+      <div style="margin-bottom: 10px">
+        <div class="flex-between" style="font-size: 0.9rem; margin-bottom: 5px">
+          <span>Terdaftar</span>
+          <span style="font-weight: 700">78</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 78%"></div>
+        </div>
+      </div>
+      <div style="margin-bottom: 10px">
+        <div class="flex-between" style="font-size: 0.9rem; margin-bottom: 5px">
+          <span>Kapasitas</span>
+          <span style="font-weight: 700">100</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function copyLink() {
+    const copyText = document.getElementById("shareLink");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    alert("Link berhasil disalin!");
+  }
+</script>

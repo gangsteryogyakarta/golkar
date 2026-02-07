@@ -1,0 +1,435 @@
+<!-- Header -->
+<div style="margin-bottom: 24px">
+  <h2
+    style="
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    "
+  >
+    WhatsApp Blasting
+  </h2>
+  <p style="color: #64748b; font-size: 0.9rem">
+    Kirim pesan massal ke pemilih dan tim internal
+  </p>
+</div>
+
+<!-- Tabs -->
+<div
+  class="tabs-container"
+  style="
+    width: 100%;
+    margin-bottom: 24px;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 8px;
+  "
+>
+  <div
+    class="tab-item active"
+    onclick="switchTab('compose')"
+    style="border-radius: 6px"
+  >
+    Buat Pesan
+  </div>
+  <div
+    class="tab-item"
+    onclick="switchTab('templates')"
+    style="border-radius: 6px"
+  >
+    Template Pesan
+  </div>
+  <div class="tab-item" onclick="switchTab('logs')" style="border-radius: 6px">
+    Log Pengiriman
+  </div>
+</div>
+
+<!-- Tab Content: Compose -->
+<div id="compose" class="tab-content active">
+  <div
+    class="dashboard-main"
+    style="grid-template-columns: 2fr 1fr; gap: 24px; align-items: start"
+  >
+    <!-- Left: Compose Form -->
+    <div
+      class="chart-container"
+      style="padding: 24px; border-top: 4px solid #ffd700"
+    >
+      <h4
+        style="
+          font-size: 1rem;
+          color: #1a1a1a;
+          margin-bottom: 5px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        "
+      >
+        <i class="fa-regular fa-pen-to-square" style="color: #b45309"></i>
+        Compose Pesan Blast
+      </h4>
+      <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 20px">
+        Buat dan kirim pesan ke target audience
+      </p>
+
+      <form
+        onsubmit="
+          event.preventDefault();
+          alert('Pesan Blast Terkirim!');
+        "
+      >
+        <!-- Target Audience -->
+        <div class="form-group">
+          <label class="form-label" style="display: block"
+            >Target Audience</label
+          >
+          <div style="display: flex; gap: 10px">
+            <button
+              type="button"
+              class="btn-target active"
+              onclick="selectAudience(this, 'pemilih')"
+            >
+              <i class="fa-solid fa-users-viewfinder"></i> Pemilih
+            </button>
+            <button
+              type="button"
+              class="btn-target"
+              onclick="selectAudience(this, 'internal')"
+            >
+              <i class="fa-solid fa-users-gear"></i> Tim Internal
+              (Relawan/Koordinator)
+            </button>
+          </div>
+        </div>
+
+        <!-- Wilayah Target (Tag Clouds) -->
+        <div class="form-group">
+          <label class="form-label" style="display: block"
+            >Pilih Wilayah Target</label
+          >
+          <div style="display: flex; gap: 8px; flex-wrap: wrap">
+            <button type="button" class="btn-tag" onclick="toggleTag(this)">
+              Kota Yogyakarta
+            </button>
+            <button type="button" class="btn-tag" onclick="toggleTag(this)">
+              Sleman
+            </button>
+            <button type="button" class="btn-tag" onclick="toggleTag(this)">
+              Bantul
+            </button>
+            <button type="button" class="btn-tag" onclick="toggleTag(this)">
+              Gunung Kidul
+            </button>
+            <button type="button" class="btn-tag" onclick="toggleTag(this)">
+              Kulon Progo
+            </button>
+          </div>
+        </div>
+
+        <!-- Pesan -->
+        <div class="form-group">
+          <label class="form-label">Pesan</label>
+          <textarea
+            id="blastMessage"
+            class="form-input"
+            rows="6"
+            placeholder="Tulis pesan Anda di sini..."
+            style="resize: vertical"
+          ></textarea>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-top: 5px;
+              font-size: 0.75rem;
+              color: #64748b;
+            "
+          >
+            <span>0 karakter</span>
+            <span>Gunakan [NAMA], [EVENT], [TANGGAL] untuk personalisasi</span>
+          </div>
+        </div>
+
+        <!-- Lampiran -->
+        <div class="form-group">
+          <label class="form-label">Lampiran Media (Opsional)</label>
+          <input type="file" class="form-input" />
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          class="btn-generate"
+          style="
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+            background: #16a34a;
+            color: white;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+          "
+        >
+          <i class="fa-brands fa-whatsapp" style="margin-right: 8px"></i> Kirim
+          Blast WhatsApp
+        </button>
+      </form>
+    </div>
+
+    <!-- Right: Sidebar Info -->
+    <div style="display: flex; flex-direction: column; gap: 24px">
+      <!-- Estimasi -->
+      <div
+        class="chart-container"
+        style="padding: 24px; border-top: 4px solid #ffd700"
+      >
+        <h4 style="font-size: 1rem; color: #1a1a1a; margin-bottom: 20px">
+          Estimasi Pengiriman
+        </h4>
+
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+          "
+        >
+          <span style="color: #64748b">Target Penerima</span>
+          <span style="font-weight: 700; color: #b45309">0</span>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+          "
+        >
+          <span style="color: #64748b">Wilayah</span>
+          <span style="font-weight: 700">0</span>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+          "
+        >
+          <span style="color: #64748b">Waktu Estimasi</span>
+          <span style="font-weight: 700">~5 menit</span>
+        </div>
+      </div>
+
+      <!-- Tips -->
+      <div
+        class="chart-container"
+        style="
+          padding: 24px;
+          background: #fffbeb;
+          border: 1px solid #fef3c7;
+          box-shadow: none;
+        "
+      >
+        <h4 style="font-size: 1rem; color: #b45309; margin-bottom: 15px">
+          Tips Pengiriman
+        </h4>
+        <ul
+          style="
+            padding-left: 20px;
+            font-size: 0.85rem;
+            color: #4b3a00;
+            line-height: 1.8;
+          "
+        >
+          <li>Personalisasi dengan [NAMA]</li>
+          <li>Kirim di waktu optimal (09:00-17:00)</li>
+          <li>Hindari spam, max 1x sehari</li>
+          <li>Sertakan call-to-action yang jelas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab Content: Templates -->
+<div id="templates" class="tab-content">
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px">
+    <!-- Template 1 -->
+    <div class="template-card">
+      <h4>Undangan Event</h4>
+      <div class="template-body">
+        Yth. Bapak/Ibu [NAMA], Dengan hormat kami mengundang Anda untuk
+        menghadiri acara [EVENT] yang akan diselenggarakan pada: Tanggal:
+        [TANGGAL] Waktu: [WAKTU] Tempat: [LOKASI]
+      </div>
+      <button class="btn-use-template" onclick="useTemplate(this)">
+        Gunakan Template
+      </button>
+    </div>
+
+    <!-- Template 2 -->
+    <div class="template-card">
+      <h4>Pengingat Check-in</h4>
+      <div class="template-body">
+        Halo [NAMA], Ini pengingat untuk event [EVENT] hari ini! Silakan lakukan
+        check-in dengan menunjukkan QR code yang telah dikirimkan sebelumnya.
+      </div>
+      <button class="btn-use-template" onclick="useTemplate(this)">
+        Gunakan Template
+      </button>
+    </div>
+
+    <!-- Template 3 -->
+    <div class="template-card">
+      <h4>Terima Kasih Kehadiran</h4>
+      <div class="template-body">
+        Terima kasih [NAMA] atas kehadiran Anda di [EVENT]. Kepercayaan dan
+        dukungan Anda sangat berarti bagi kami. Salam hangat, Partai Golkar 🟡
+      </div>
+      <button class="btn-use-template" onclick="useTemplate(this)">
+        Gunakan Template
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Tab Content: Logs -->
+<div id="logs" class="tab-content">
+  <div
+    class="chart-container"
+    style="border-top: 4px solid #ffd700; padding: 24px"
+  >
+    <div style="margin-bottom: 24px">
+      <h4
+        style="
+          font-size: 1rem;
+          color: #b45309;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        "
+      >
+        <i class="fa-regular fa-clock"></i> Log Pengiriman Pesan
+      </h4>
+      <p style="color: #64748b; font-size: 0.85rem">
+        Riwayat dan status pengiriman WhatsApp blast
+      </p>
+    </div>
+
+    <!-- Stats Row -->
+    <div
+      style="
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 30px;
+      "
+    >
+      <div class="log-stat-card success">
+        <div class="label">
+          <i class="fa-regular fa-circle-check"></i> Terkirim
+        </div>
+        <div class="value">2</div>
+      </div>
+      <div class="log-stat-card danger">
+        <div class="label">
+          <i class="fa-regular fa-circle-xmark"></i> Gagal
+        </div>
+        <div class="value">1</div>
+      </div>
+      <div class="log-stat-card warning">
+        <div class="label"><i class="fa-regular fa-clock"></i> Pending</div>
+        <div class="value">0</div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Waktu</th>
+            <th>Penerima</th>
+            <th>No. WhatsApp</th>
+            <th>Pesan</th>
+            <th class="text-end">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2026-02-05 10:15</td>
+            <td>Budi Santoso</td>
+            <td>081234567890</td>
+            <td>Undangan Event Golkar...</td>
+            <td class="text-end">
+              <span class="badge badge-success">Terkirim</span>
+            </td>
+          </tr>
+          <tr>
+            <td>2026-02-05 10:15</td>
+            <td>Siti Aminah</td>
+            <td>081234567891</td>
+            <td>Undangan Event Golkar...</td>
+            <td class="text-end">
+              <span class="badge badge-success">Terkirim</span>
+            </td>
+          </tr>
+          <tr>
+            <td>2026-02-05 10:15</td>
+            <td>Ahmad Fauzi</td>
+            <td>081234567892</td>
+            <td>Undangan Event Golkar...</td>
+            <td class="text-end">
+              <span class="badge badge-danger">Gagal</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; margin-top: 20px">
+      <button
+        class="btn-icon"
+        style="width: auto; padding: 10px 20px; font-weight: 600"
+      >
+        Export Log ke Excel
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Inline simpler scripts for this module
+  function switchTab(tabId) {
+    document.querySelectorAll(".tab-content").forEach((tab) => {
+      tab.classList.remove("active");
+    });
+    document.getElementById(tabId).classList.add("active");
+
+    document.querySelectorAll(".tab-item").forEach((item) => {
+      item.classList.remove("active");
+    });
+    document
+      .querySelector(`.tab-item[onclick="switchTab('${tabId}')"]`)
+      .classList.add("active");
+  }
+
+  function selectAudience(btn, type) {
+    document
+      .querySelectorAll(".btn-target")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+  }
+
+  function toggleTag(btn) {
+    btn.classList.toggle("active");
+  }
+
+  function useTemplate(btn) {
+    const text = btn.parentElement.querySelector(".template-body").innerText;
+    document.getElementById("blastMessage").value = text;
+    switchTab("compose");
+  }
+</script>

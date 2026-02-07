@@ -1,0 +1,138 @@
+<!-- Early Warning View -->
+<div class="glass" style="padding: 30px; border-radius: 16px">
+  <div class="flex-between" style="margin-bottom: 30px">
+    <div>
+      <h2 style="font-size: 1.5rem; margin-bottom: 5px; color: #1a1a1a">
+        Alert: Isu Kelangkaan Pupuk Jatim
+      </h2>
+      <div class="text-danger" style="font-size: 0.9rem">
+        <i class="fa-solid fa-circle-exclamation"></i> Critical Alert • Detected
+        2 hours ago
+      </div>
+    </div>
+    <!-- Escalation Button -->
+    <div style="display: flex; gap: 10px">
+      <button
+        class="btn-generate"
+        onclick="alert('Laporan diteruskan ke Desk Politik Nasional')"
+        style="background: #fff; border: 1px solid #ccc; color: #333"
+      >
+        <i class="fa-solid fa-share-nodes"></i> Eskalasi
+      </button>
+      <button class="btn-generate" onclick="switchModule('optimizer')">
+        <i class="fa-solid fa-wand-sparkles"></i> Mitigasi Publik
+      </button>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px">
+    <div
+      style="
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+      "
+    >
+      <h4 style="margin-bottom: 15px">Crisis Timeline Analysis</h4>
+      <!-- Mock Timeline -->
+      <div
+        style="
+          border-left: 2px solid #cbd5e1;
+          padding-left: 20px;
+          margin-left: 10px;
+        "
+      >
+        <div style="margin-bottom: 20px; position: relative">
+          <div
+            style="
+              position: absolute;
+              left: -26px;
+              width: 10px;
+              height: 10px;
+              background: #ef4444;
+              border-radius: 50%;
+            "
+          ></div>
+          <div style="font-size: 0.8rem; color: #64748b">10:00 AM</div>
+          <div style="font-weight: 600">Keluhan Harga Pupuk Naik (+40%)</div>
+        </div>
+        <div style="margin-bottom: 20px; position: relative">
+          <div
+            style="
+              position: absolute;
+              left: -26px;
+              width: 10px;
+              height: 10px;
+              background: #ef4444;
+              border-radius: 50%;
+            "
+          ></div>
+          <div style="font-size: 0.8rem; color: #64748b">10:45 AM</div>
+          <div style="font-weight: 600">
+            Akun @petani_bersatu memposting foto gudang kosong
+          </div>
+        </div>
+        <div style="margin-bottom: 0px; position: relative">
+          <div
+            style="
+              position: absolute;
+              left: -26px;
+              width: 10px;
+              height: 10px;
+              background: var(--primary-color);
+              border-radius: 50%;
+            "
+          ></div>
+          <div style="font-size: 0.8rem; color: #64748b">11:30 AM</div>
+          <div style="font-weight: 600">System Alert Triggered</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Automated Disposisi Panel -->
+    <div
+      style="
+        background: #fffbe6;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid var(--primary-color);
+      "
+    >
+      <h4 style="margin-bottom: 15px; color: #b8860b">
+        <i class="fa-solid fa-gavel"></i> Automated Disposisi
+      </h4>
+      <p style="font-size: 0.9rem; margin-bottom: 15px">
+        Sistem menyarankan tindakan segera kepada:
+      </p>
+
+      <div class="form-group">
+        <label class="form-label" style="font-size: 0.85rem"
+          >Penanggung Jawab</label
+        >
+        <select class="form-select">
+          <option selected>Departemen Kajian Strategis</option>
+          <option>Humas DPP Golkar</option>
+          <option>Tim Respon Digital</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" style="font-size: 0.85rem"
+          >Instruksi Default</label
+        >
+        <textarea class="form-input" rows="3">
+Segera koordinasi dengan DPD Jawa Timur. Siapkan rilis bantuan pupuk dan dampingi petani di lapangan. Lapor progress.</textarea
+        >
+      </div>
+
+      <button
+        class="btn-generate"
+        onclick="alert('Instruksi terkirim via WhatsApp & Email Secure!')"
+        style="width: 100%; padding: 10px"
+      >
+        <i class="fa-solid fa-paper-plane"></i> Kirim Instruksi
+      </button>
+    </div>
+  </div>
+</div>

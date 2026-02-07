@@ -1,0 +1,53 @@
+<!-- Regional Intel View -->
+<div class="dashboard-main" style="grid-template-rows: auto">
+  <div
+    class="chart-container"
+    style="grid-column: 1 / 3; height: 400px; position: relative"
+  >
+    <div class="flex-between" style="margin-bottom: 20px">
+      <h3 style="font-size: 1.1rem; color: #1a1a1a">
+        Regional Comparative Analysis
+      </h3>
+      <select class="form-select" style="width: 150px">
+        <option>Jawa Barat</option>
+        <option>Jawa Tengah</option>
+        <option>Jawa Timur</option>
+        <option>DKI Jakarta</option>
+        <option>Banten</option>
+      </select>
+    </div>
+    <div style="height: 300px; width: 100%">
+      <canvas id="competitorChart"></canvas>
+    </div>
+  </div>
+</div>
+<div
+  style="
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  "
+>
+  <div class="stat-card" style="border-top: 4px solid #ffd700">
+    <div class="stat-label">Prov. Jawa Barat</div>
+    <div class="stat-value">34.2%</div>
+    <div class="stat-trend text-success">
+      <i class="fa-solid fa-caret-up"></i> +1.5%
+    </div>
+  </div>
+  <div class="stat-card" style="border-top: 4px solid #000000">
+    <div class="stat-label">Prov. Jawa Tengah</div>
+    <div class="stat-value">28.1%</div>
+    <div class="stat-trend text-danger">
+      <i class="fa-solid fa-caret-down"></i> -0.8%
+    </div>
+  </div>
+  <div class="stat-card" style="border-top: 4px solid #b8860b">
+    <div class="stat-label">Prov. Jawa Timur</div>
+    <div class="stat-value">18.5%</div>
+    <div class="stat-trend text-muted">
+      <i class="fa-solid fa-minus"></i> 0.0%
+    </div>
+  </div>
+</div>

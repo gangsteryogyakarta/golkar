@@ -1,0 +1,623 @@
+<!-- Header -->
+<div style="margin-bottom: 24px">
+  <h2
+    style="
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    "
+  >
+    Social Media Management
+  </h2>
+  <p style="color: #64748b; font-size: 0.9rem">
+    Kelola dan posting ke multiple platform dengan AI analytics
+  </p>
+</div>
+
+<!-- Tabs -->
+<div
+  class="tabs-container"
+  style="
+    width: 100%;
+    margin-bottom: 24px;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 8px;
+  "
+>
+  <div
+    class="tab-item active"
+    onclick="switchTab('multi-post')"
+    style="border-radius: 6px"
+  >
+    Multi-Platform Post
+  </div>
+  <div
+    class="tab-item"
+    onclick="switchTab('analytics')"
+    style="border-radius: 6px"
+  >
+    Analytics & Engagement
+  </div>
+  <div
+    class="tab-item"
+    onclick="switchTab('leaderboard')"
+    style="border-radius: 6px"
+  >
+    Leaderboard Kader
+  </div>
+  <div
+    class="tab-item"
+    onclick="switchTab('ai-recs')"
+    style="border-radius: 6px"
+  >
+    AI Recommendations
+  </div>
+</div>
+
+<!-- Tab Content: Multi-Platform Post -->
+<div id="multi-post" class="tab-content active">
+  <div
+    class="dashboard-main"
+    style="grid-template-columns: 2fr 1fr; gap: 24px; align-items: start"
+  >
+    <!-- Left: Compose Post -->
+    <div
+      class="chart-container"
+      style="padding: 24px; border-top: 4px solid #ffd700"
+    >
+      <h4
+        style="
+          font-size: 1rem;
+          color: #1a1a1a;
+          margin-bottom: 5px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        "
+      >
+        <i class="fa-solid fa-share-nodes" style="color: #b45309"></i> Buat &
+        Posting ke Multiple Platform
+      </h4>
+      <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 20px">
+        Post sekaligus ke Facebook, Instagram, dan Twitter/X
+      </p>
+
+      <form
+        onsubmit="
+          event.preventDefault();
+          alert('Post Scheduled!');
+        "
+      >
+        <!-- Pilih Platform -->
+        <div class="form-group">
+          <label class="form-label" style="display: block"
+            >Pilih Platform</label
+          >
+          <div style="display: flex; gap: 10px">
+            <button
+              type="button"
+              class="btn-platform"
+              onclick="togglePlatform(this)"
+            >
+              <i class="fa-brands fa-facebook"></i> Facebook
+            </button>
+            <button
+              type="button"
+              class="btn-platform"
+              onclick="togglePlatform(this)"
+            >
+              <i class="fa-brands fa-instagram"></i> Instagram
+            </button>
+            <button
+              type="button"
+              class="btn-platform"
+              onclick="togglePlatform(this)"
+            >
+              <i class="fa-brands fa-twitter"></i> Twitter/X
+            </button>
+          </div>
+        </div>
+
+        <!-- Konten Post -->
+        <div class="form-group">
+          <label class="form-label">Konten Post</label>
+          <textarea
+            class="form-input"
+            rows="5"
+            placeholder="Tulis konten post Anda di sini..."
+            style="resize: vertical"
+          ></textarea>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-top: 5px;
+              font-size: 0.75rem;
+              color: #64748b;
+            "
+          >
+            <span>0 karakter</span>
+            <span>Gunakan #hashtag untuk jangkauan lebih luas</span>
+          </div>
+        </div>
+
+        <!-- Upload Media -->
+        <div class="form-group">
+          <label class="form-label">Upload Media</label>
+          <input type="file" class="form-input" />
+        </div>
+
+        <!-- Jadwalkan Post -->
+        <div class="form-group">
+          <label class="form-label">Jadwalkan Post (Opsional)</label>
+          <div style="display: flex; gap: 10px">
+            <input type="date" class="form-input" style="flex: 2" />
+            <input type="time" class="form-input" style="flex: 1" />
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          class="btn-generate"
+          id="btn-post"
+          style="
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+            background: #eab308;
+            color: black;
+            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+          "
+        >
+          <i class="fa-solid fa-paper-plane" style="margin-right: 8px"></i> Post
+          ke <span id="platform-count">0</span> Platform
+        </button>
+      </form>
+    </div>
+
+    <!-- Right: Stats & Tips -->
+    <div style="display: flex; flex-direction: column; gap: 24px">
+      <!-- Quick Stats -->
+      <div
+        class="chart-container"
+        style="padding: 24px; border-top: 4px solid #ffd700"
+      >
+        <h4
+          style="
+            font-size: 1rem;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          "
+        >
+          <i class="fa-solid fa-wand-magic-sparkles" style="color: #b45309"></i>
+          Quick Stats
+        </h4>
+
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+          "
+        >
+          <span style="color: #64748b">Total Followers</span>
+          <span style="font-weight: 700; color: #b45309">45.2K</span>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+          "
+        >
+          <span style="color: #64748b">Avg. Engagement</span>
+          <span style="font-weight: 700; color: #16a34a">8.5%</span>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+          "
+        >
+          <span style="color: #64748b">Posts This Week</span>
+          <span style="font-weight: 700">12</span>
+        </div>
+      </div>
+
+      <!-- Post Tips -->
+      <div
+        class="chart-container"
+        style="
+          padding: 24px;
+          background: #fffbeb;
+          border: 1px solid #fef3c7;
+          box-shadow: none;
+        "
+      >
+        <h4 style="font-size: 1rem; color: #b45309; margin-bottom: 15px">
+          Post Tips
+        </h4>
+        <ul
+          style="
+            padding-left: 20px;
+            font-size: 0.85rem;
+            color: #4b3a00;
+            line-height: 1.8;
+          "
+        >
+          <li>Sertakan visual menarik</li>
+          <li>Gunakan hashtag relevan</li>
+          <li>Post di waktu prime time</li>
+          <li>Ajak interaksi audiens</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab Content: Analytics & Engagement -->
+<div id="analytics" class="tab-content">
+  <!-- Top Row: Stats Cards -->
+  <div
+    class="stats-grid"
+    style="grid-template-columns: repeat(4, 1fr); margin-bottom: 24px"
+  >
+    <div class="stat-card accent-left" style="border-left-color: #3b82f6">
+      <div class="stat-label">Total Likes</div>
+      <div class="stat-value" style="color: #3b82f6">1,651</div>
+      <div class="stat-trend" style="color: #16a34a; background: #dcfce7">
+        +18% minggu ini
+      </div>
+    </div>
+    <div class="stat-card accent-left" style="border-left-color: #10b981">
+      <div class="stat-label">Comments</div>
+      <div class="stat-value" style="color: #10b981">295</div>
+      <div class="stat-trend" style="color: #dc2626; background: #fee2e2">
+        -22% minggu ini
+      </div>
+    </div>
+    <div class="stat-card accent-left" style="border-left-color: #8b5cf6">
+      <div class="stat-label">Shares</div>
+      <div class="stat-value" style="color: #8b5cf6">230</div>
+      <div class="stat-trend" style="color: #16a34a; background: #dcfce7">
+        +15% minggu ini
+      </div>
+    </div>
+    <div class="stat-card accent-left" style="border-left-color: #f59e0b">
+      <div class="stat-label">Reach</div>
+      <div class="stat-value" style="color: #f59e0b">34.9K</div>
+      <div class="stat-trend" style="color: #16a34a; background: #dcfce7">
+        +28% minggu ini
+      </div>
+    </div>
+  </div>
+
+  <!-- Engagement Chart -->
+  <div
+    class="chart-container"
+    style="margin-bottom: 24px; border-top: 4px solid #f59e0b"
+  >
+    <h4 style="font-size: 1rem; color: #1a1a1a; margin-bottom: 5px">
+      Engagement Trend (5 Hari Terakhir)
+    </h4>
+    <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 20px">
+      Analisis performa engagement sosial media
+    </p>
+    <div style="height: 300px">
+      <canvas id="engagementChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Reach Chart -->
+  <div class="chart-container" style="border-top: 4px solid #f59e0b">
+    <h4 style="font-size: 1rem; color: #1a1a1a; margin-bottom: 5px">
+      Reach & Impressions
+    </h4>
+    <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 20px">
+      Jangkauan konten sosial media
+    </p>
+    <div style="height: 300px">
+      <canvas id="reachChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Tab Content: Leaderboard Kader -->
+<div id="leaderboard" class="tab-content">
+  <div class="chart-container" style="border-top: 4px solid #ffd700">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      "
+    >
+      <div>
+        <h4 style="font-size: 1rem; color: #1a1a1a; margin-bottom: 5px">
+          <i class="fa-solid fa-medal" style="color: #b45309"></i> Leaderboard
+          Kinerja Akun Kader
+        </h4>
+        <p style="color: #64748b; font-size: 0.85rem">
+          Ranking berdasarkan engagement dan growth rate media sosial
+        </p>
+      </div>
+      <button
+        class="btn-icon"
+        style="width: auto; padding: 8px 16px; font-size: 0.85rem"
+      >
+        <i class="fa-solid fa-file-pdf"></i> Export Laporan PDF
+      </button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th style="width: 60px">Rank</th>
+            <th>Nama Kader</th>
+            <th>Wilayah</th>
+            <th class="text-end">Total Engagement</th>
+            <th class="text-center">Growth Rate</th>
+            <th>Badge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><i class="fa-solid fa-trophy" style="color: #ffd700"></i></td>
+            <td style="font-weight: 600">Ahmad Fauzi</td>
+            <td>Jakarta Pusat</td>
+            <td class="text-end">12.450</td>
+            <td class="text-center">
+              <span class="badge badge-success">+25%</span>
+            </td>
+            <td>
+              <span class="badge badge-gold"
+                ><i class="fa-solid fa-star"></i> Top Performer</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td><i class="fa-solid fa-medal" style="color: #c0c0c0"></i></td>
+            <td style="font-weight: 600">Siti Nurhaliza</td>
+            <td>Jakarta Barat</td>
+            <td class="text-end">11.230</td>
+            <td class="text-center">
+              <span class="badge badge-success">+22%</span>
+            </td>
+            <td><span class="badge badge-blue">Rising Star</span></td>
+          </tr>
+          <tr>
+            <td><i class="fa-solid fa-medal" style="color: #cd7f32"></i></td>
+            <td style="font-weight: 600">Budi Santoso</td>
+            <td>Jakarta Timur</td>
+            <td class="text-end">10.870</td>
+            <td class="text-center">
+              <span class="badge badge-success">+19%</span>
+            </td>
+            <td><span class="badge badge-blue">Rising Star</span></td>
+          </tr>
+          <tr>
+            <td>#4</td>
+            <td style="font-weight: 600">Dewi Lestari</td>
+            <td>Jakarta Selatan</td>
+            <td class="text-end">9.640</td>
+            <td class="text-center">
+              <span class="badge badge-success">+15%</span>
+            </td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>#5</td>
+            <td style="font-weight: 600">Eko Prasetyo</td>
+            <td>Jakarta Utara</td>
+            <td class="text-end">8.920</td>
+            <td class="text-center">
+              <span class="badge badge-success">+12%</span>
+            </td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color: #94a3b8; font-size: 0.8rem; margin-top: 20px">
+      Update terakhir: 5 Feb 2026, 10:00 WIB
+    </p>
+  </div>
+</div>
+
+<!-- Tab Content: AI Recommendations -->
+<div id="ai-recs" class="tab-content">
+  <div
+    class="dashboard-main"
+    style="grid-template-columns: 1.5fr 1fr; gap: 24px; align-items: start"
+  >
+    <!-- Left: AI Insights -->
+    <div
+      class="chart-container"
+      style="border-top: 4px solid #a855f7; padding: 24px"
+    >
+      <h4
+        style="
+          font-size: 1rem;
+          color: #1a1a1a;
+          margin-bottom: 5px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        "
+      >
+        <i class="fa-solid fa-wand-magic-sparkles" style="color: #a855f7"></i>
+        AI-Based Recommendations
+      </h4>
+      <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 25px">
+        Rekomendasi strategis untuk meningkatkan engagement
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 15px">
+        <div class="ai-insight-item">
+          <i class="fa-regular fa-clock" style="color: #dc2626"></i>
+          <span>Waktu optimal posting: 10:00 - 12:00 dan 18:00 - 20:00</span>
+        </div>
+        <div class="ai-insight-item">
+          <i class="fa-solid fa-hashtag" style="color: #3b82f6"></i>
+          <span>Gunakan hashtag trending: #GolkarMaju #IndonesiaEmas</span>
+        </div>
+        <div class="ai-insight-item">
+          <i class="fa-regular fa-image" style="color: #16a34a"></i>
+          <span
+            >Tambahkan visual/gambar untuk meningkatkan engagement 3x
+            lipat</span
+          >
+        </div>
+        <div class="ai-insight-item">
+          <i class="fa-regular fa-comments" style="color: #f59e0b"></i>
+          <span
+            >Gunakan pertanyaan untuk mendorong interaksi di kolom
+            komentar</span
+          >
+        </div>
+        <div class="ai-insight-item">
+          <i class="fa-solid fa-bullseye" style="color: #a855f7"></i>
+          <span
+            >Konsistensi posting: minimal 2x sehari untuk growth optimal</span
+          >
+        </div>
+      </div>
+
+      <button
+        class="btn-generate"
+        style="
+          width: 100%;
+          margin-top: 25px;
+          background: #a855f7;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+        "
+      >
+        <i class="fa-solid fa-robot"></i> Generate More AI Insights
+      </button>
+    </div>
+
+    <!-- Right: Trending -->
+    <div
+      class="chart-container"
+      style="border-top: 4px solid #ffd700; padding: 24px"
+    >
+      <h4
+        style="
+          font-size: 1rem;
+          color: #1a1a1a;
+          margin-bottom: 5px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        "
+      >
+        <i class="fa-solid fa-arrow-trend-up" style="color: #b45309"></i>
+        Trending Topics & Hashtags
+      </h4>
+      <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 20px">
+        Topik dan hashtag yang sedang trending
+      </p>
+
+      <div style="margin-bottom: 20px">
+        <h5 style="font-size: 0.9rem; color: #4b3a00; margin-bottom: 10px">
+          Trending Hashtags:
+        </h5>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <span class="badge badge-gold-outline">#GolkarMaju</span>
+          <span class="badge badge-gold-outline">#IndonesiaEmas</span>
+          <span class="badge badge-gold-outline">#PemudaBangsa</span>
+          <span class="badge badge-gold-outline">#PartaiRakyat</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px">
+        <h5 style="font-size: 0.9rem; color: #4b3a00; margin-bottom: 10px">
+          Hot Topics:
+        </h5>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <div class="topic-item">
+            <span>Program Kesehatan Gratis</span>
+            <span class="badge badge-success">+45%</span>
+          </div>
+          <div class="topic-item">
+            <span>Pembangunan Infrastruktur</span>
+            <span class="badge badge-success">+38%</span>
+          </div>
+          <div class="topic-item">
+            <span>Pendidikan Berkualitas</span>
+            <span class="badge badge-success">+32%</span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        style="
+          background: #fffbeb;
+          padding: 15px;
+          border-radius: 8px;
+          border: 1px solid #ffe4e6;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 5px;
+            color: #b45309;
+            font-weight: 700;
+          "
+        >
+          <i class="fa-regular fa-lightbulb"></i> AI Suggestion:
+        </div>
+        <p style="font-size: 0.85rem; color: #4b3a00; line-height: 1.4">
+          Fokus pada topik "Program Kesehatan Gratis" untuk mendapatkan
+          engagement maksimal. Waktu optimal posting: Hari ini pukul 19:00 WIB.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Inline simpler scripts for this module
+  window.switchTab = function (tabId) {
+    document.querySelectorAll(".tab-content").forEach((tab) => {
+      tab.classList.remove("active");
+    });
+    document.getElementById(tabId).classList.add("active");
+
+    document.querySelectorAll(".tab-item").forEach((item) => {
+      item.classList.remove("active");
+    });
+    document
+      .querySelector(`.tab-item[onclick="switchTab('${tabId}')"]`)
+      .classList.add("active");
+  };
+
+  function togglePlatform(btn) {
+    btn.classList.toggle("active");
+    updatePlatformCount();
+  }
+
+  function updatePlatformCount() {
+    const count = document.querySelectorAll(".btn-platform.active").length;
+    document.getElementById("platform-count").innerText = count;
+  }
+</script>

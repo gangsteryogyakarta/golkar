@@ -1,0 +1,173 @@
+<!-- Back Button -->
+<div style="margin-bottom: 20px">
+  <button
+    onclick="loadModule('events')"
+    class="btn-icon"
+    style="width: auto; padding: 8px 16px; border-radius: 8px; gap: 8px"
+  >
+    <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Event
+  </button>
+</div>
+
+<!-- Header -->
+<div style="margin-bottom: 24px">
+  <h2
+    style="
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    "
+  >
+    Buat Event Baru
+  </h2>
+  <p style="color: #64748b; font-size: 0.9rem">
+    Isi formulir di bawah ini untuk menambahkan event baru.
+  </p>
+</div>
+
+<!-- Form Container -->
+<div
+  class="chart-container"
+  style="padding: 30px; border-top: 4px solid #ffd700"
+>
+  <form
+    onsubmit="
+      alert('Event berhasil dibuat!');
+      loadModule('events');
+      return false;
+    "
+  >
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px">
+      <!-- Left Column: Main Info -->
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <div class="form-group">
+          <label class="form-label">Nama Event</label>
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Contoh: Rapat Koordinasi Wilayah"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Deskripsi Event</label>
+          <textarea
+            class="form-input"
+            rows="4"
+            placeholder="Jelaskan detail tujuan dan agenda event..."
+          ></textarea>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+          <div class="form-group">
+            <label class="form-label">Tanggal Mulai</label>
+            <input type="date" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Waktu Mulai</label>
+            <input type="time" class="form-input" required />
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+          <div class="form-group">
+            <label class="form-label">Tanggal Selesai</label>
+            <input type="date" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Waktu Selesai</label>
+            <input type="time" class="form-input" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Lokasi</label>
+          <div style="position: relative">
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Cari lokasi atau masukkan alamat..."
+              style="padding-left: 40px"
+            />
+            <i
+              class="fa-solid fa-location-dot"
+              style="
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #94a3b8;
+              "
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Details & Settings -->
+      <div style="display: flex; flex-direction: column; gap: 20px">
+        <div class="form-group">
+          <label class="form-label">Penyelenggara</label>
+          <select class="form-select">
+            <option>DPD Jakarta Pusat</option>
+            <option>DPD Jakarta Barat</option>
+            <option>DPD Jakarta Selatan</option>
+            <option>DPD Jakarta Timur</option>
+            <option>DPD Jakarta Utara</option>
+            <option>DPP Pusat</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Target Peserta</label>
+          <input
+            type="number"
+            class="form-input"
+            placeholder="Jumlah peserta (misal: 100)"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Kategori Event</label>
+          <select class="form-select">
+            <option>Rapat Koordinasi</option>
+            <option>Sosialisasi</option>
+            <option>Kampanye</option>
+            <option>Bakti Sosial</option>
+            <option>Pelatihan Kader</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Status Awal</label>
+          <select class="form-select">
+            <option>Draft</option>
+            <option selected>Publikasi (Akan Datang)</option>
+          </select>
+        </div>
+
+        <div
+          style="
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+          "
+        >
+          <button
+            type="submit"
+            class="btn-generate"
+            style="
+              width: 100%;
+              justify-content: center;
+              display: flex;
+              gap: 10px;
+              align-items: center;
+            "
+          >
+            <i class="fa-regular fa-calendar-plus"></i> Simpan Event
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

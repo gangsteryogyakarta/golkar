@@ -1,0 +1,221 @@
+<!-- Header -->
+<div
+  class="chart-container"
+  style="
+    background: #fffbeb;
+    border-top: 4px solid #ffd700;
+    padding: 24px;
+    margin-bottom: 24px;
+  "
+>
+  <h2
+    style="
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    "
+  >
+    <i
+      class="fa-regular fa-file-lines"
+      style="color: #f59e0b; margin-right: 8px"
+    ></i>
+    Form Pelaporan Kegiatan Anggota Dewan
+  </h2>
+  <p style="color: #64748b; font-size: 0.9rem">
+    Laporkan kegiatan dan aktivitas anggota dewan untuk monitoring dan evaluasi
+  </p>
+</div>
+
+<!-- Form Container -->
+<div class="chart-container" style="padding: 30px">
+  <form
+    onsubmit="
+      alert('Laporan berhasil dikirim!');
+      loadModule('dashboard');
+      return false;
+    "
+  >
+    <!-- Data Pelapor -->
+    <h3
+      style="
+        font-size: 1rem;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        font-weight: 600;
+      "
+    >
+      Data Pelapor
+    </h3>
+    <div
+      style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+      "
+    >
+      <div class="form-group">
+        <label class="form-label">Nama Anggota Dewan *</label>
+        <input
+          type="text"
+          class="form-input"
+          placeholder="Masukkan nama lengkap"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Jabatan *</label>
+        <select class="form-select" required>
+          <option value="" disabled selected>Pilih jabatan</option>
+          <option>Ketua Fraksi</option>
+          <option>Anggota Komisi I</option>
+          <option>Anggota Komisi II</option>
+          <option>Anggota Komisi III</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Wilayah *</label>
+        <select class="form-select" required>
+          <option value="" disabled selected>Pilih wilayah</option>
+          <option>Dapil 1</option>
+          <option>Dapil 2</option>
+          <option>Dapil 3</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tanggal Kegiatan *</label>
+        <input type="date" class="form-input" required />
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #f1f5f9; margin-bottom: 30px" />
+
+    <!-- Detail Kegiatan -->
+    <h3
+      style="
+        font-size: 1rem;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        font-weight: 600;
+      "
+    >
+      Detail Kegiatan
+    </h3>
+    <div
+      style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      "
+    >
+      <div class="form-group">
+        <label class="form-label">Jenis Kegiatan *</label>
+        <select class="form-select" required>
+          <option value="" disabled selected>Pilih jenis kegiatan</option>
+          <option>Reses</option>
+          <option>Kunjungan Kerja</option>
+          <option>Sosialisasi Perda</option>
+          <option>Rapat Dengar Pendapat</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Judul Kegiatan *</label>
+        <input
+          type="text"
+          class="form-input"
+          placeholder="Contoh: Sosialisasi Program Kesehatan"
+          required
+        />
+      </div>
+    </div>
+
+    <div
+      style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      "
+    >
+      <div class="form-group">
+        <label class="form-label">Lokasi Kegiatan *</label>
+        <input
+          type="text"
+          class="form-input"
+          placeholder="Alamat lengkap lokasi"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Jumlah Peserta *</label>
+        <input type="number" class="form-input" placeholder="0" required />
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 20px">
+      <label class="form-label">Deskripsi Kegiatan *</label>
+      <textarea
+        class="form-input"
+        rows="3"
+        placeholder="Jelaskan detail kegiatan yang dilaksanakan..."
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 30px">
+      <label class="form-label">Hasil & Kesimpulan *</label>
+      <textarea
+        class="form-input"
+        rows="3"
+        placeholder="Tuliskan hasil dan kesimpulan dari kegiatan..."
+        required
+      ></textarea>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #f1f5f9; margin-bottom: 30px" />
+
+    <!-- Dokumentasi -->
+    <h3
+      style="
+        font-size: 1rem;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        font-weight: 600;
+      "
+    >
+      Dokumentasi
+    </h3>
+    <div class="form-group" style="margin-bottom: 40px">
+      <label class="form-label"
+        ><i class="fa-solid fa-upload"></i> Upload Foto Kegiatan (JPG, PNG, max
+        5MB)</label
+      >
+      <input
+        type="file"
+        class="form-input"
+        accept="image/*"
+        style="padding: 10px"
+      />
+    </div>
+
+    <!-- Buttons -->
+    <div style="display: flex; justify-content: flex-end; gap: 10px">
+      <button
+        type="reset"
+        class="btn-icon"
+        style="width: auto; padding: 10px 24px; border-radius: 8px"
+      >
+        Reset
+      </button>
+      <button
+        type="submit"
+        class="btn-generate"
+        style="width: auto; padding: 10px 24px; font-size: 1rem"
+      >
+        Kirim Laporan
+      </button>
+    </div>
+  </form>
+</div>

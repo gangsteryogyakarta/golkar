@@ -1,0 +1,381 @@
+<!-- Header -->
+<div style="margin-bottom: 24px">
+  <h2
+    style="
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    "
+  >
+    Database Pemilih
+  </h2>
+  <p style="color: #64748b; font-size: 0.9rem">
+    Kelola dan visualisasi data pemilih Partai Golkar
+  </p>
+</div>
+
+<!-- Stats Row -->
+<div
+  class="stats-grid"
+  style="grid-template-columns: repeat(4, 1fr); margin-bottom: 24px"
+>
+  <div class="stat-card accent-left" style="border-left-color: #f59e0b">
+    <div class="stat-label">Total Pemilih</div>
+    <div class="stat-value" style="color: #f59e0b">5</div>
+    <div
+      class="stat-trend"
+      style="color: #64748b; font-weight: normal; font-size: 0.8rem"
+    >
+      Data terregistrasi
+    </div>
+  </div>
+  <div class="stat-card accent-left" style="border-left-color: #10b981">
+    <div class="stat-label">Status Aktif</div>
+    <div class="stat-value" style="color: #10b981">4</div>
+    <div
+      class="stat-trend"
+      style="color: #64748b; font-weight: normal; font-size: 0.8rem"
+    >
+      Pemilih aktif
+    </div>
+  </div>
+  <div class="stat-card accent-left" style="border-left-color: #3b82f6">
+    <div class="stat-label">Bulan Ini</div>
+    <div class="stat-value" style="color: #3b82f6">2</div>
+    <div
+      class="stat-trend"
+      style="color: #64748b; font-weight: normal; font-size: 0.8rem"
+    >
+      Registrasi baru
+    </div>
+  </div>
+  <div class="stat-card accent-left" style="border-left-color: #a855f7">
+    <div class="stat-label">Wilayah</div>
+    <div class="stat-value" style="color: #a855f7">5</div>
+    <div
+      class="stat-trend"
+      style="color: #64748b; font-weight: normal; font-size: 0.8rem"
+    >
+      Kabupaten/Kota
+    </div>
+  </div>
+</div>
+
+<!-- Data Table Section -->
+<div
+  class="chart-container"
+  style="border-top: 4px solid #ffd700; padding: 24px"
+>
+  <div style="margin-bottom: 24px">
+    <h4
+      style="
+        font-size: 1rem;
+        color: #b45309;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      "
+    >
+      <i class="fa-solid fa-database"></i> Data Pemilih
+    </h4>
+    <p style="color: #64748b; font-size: 0.85rem">
+      Kelola, cari, filter, dan export data pemilih
+    </p>
+  </div>
+
+  <!-- Toolbar -->
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 15px;
+      flex-wrap: wrap;
+    "
+  >
+    <!-- Search -->
+    <div style="flex: 1; min-width: 300px; position: relative">
+      <i
+        class="fa-solid fa-magnifying-glass"
+        style="
+          position: absolute;
+          left: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: #94a3b8;
+        "
+      ></i>
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Cari berdasarkan nama, NIK, atau nomor telepon..."
+        style="padding-left: 35px; width: 100%"
+      />
+    </div>
+
+    <!-- Actions -->
+    <div style="display: flex; gap: 10px">
+      <select class="form-input" style="width: auto">
+        <option>Semua Kabupaten</option>
+        <option>Kota Yogyakarta</option>
+        <option>Sleman</option>
+        <option>Bantul</option>
+        <option>Gunung Kidul</option>
+        <option>Kulon Progo</option>
+      </select>
+
+      <button
+        class="btn-icon"
+        style="background: white; border: 1px solid #e2e8f0; color: #1a1a1a"
+      >
+        <i class="fa-solid fa-filter"></i> Filter
+      </button>
+    </div>
+  </div>
+
+  <div
+    style="
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 15px;
+      gap: 10px;
+    "
+  >
+    <button
+      class="btn-icon"
+      style="
+        background: white;
+        border: 1px solid #1a1a1a;
+        color: #1a1a1a;
+        width: auto;
+        font-size: 0.85rem;
+        padding: 8px 16px;
+      "
+    >
+      <i class="fa-solid fa-file-import"></i> Import Excel
+    </button>
+    <button
+      class="btn-icon"
+      style="width: auto; font-size: 0.85rem; padding: 8px 16px"
+    >
+      <i class="fa-solid fa-file-export"></i> Export Excel
+    </button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width: 50px">No</th>
+          <th>Nama Lengkap</th>
+          <th>NIK</th>
+          <th>Kabupaten/Kota</th>
+          <th>Kecamatan</th>
+          <th>No. HP</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Tgl. Daftar</th>
+          <th style="width: 100px">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td style="font-weight: 600">Budi Santoso</td>
+          <td style="font-family: monospace">3174012345678901</td>
+          <td>Jakarta Pusat</td>
+          <td>Menteng</td>
+          <td>081234567890</td>
+          <td>budi@email.com</td>
+          <td><span class="badge badge-success">Aktif</span></td>
+          <td>2025-12-15</td>
+          <td>
+            <div style="display: flex; gap: 5px">
+              <button class="btn-action" title="Detail">Detail</button>
+              <button class="btn-action delete" title="Hapus">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td style="font-weight: 600">Siti Aminah</td>
+          <td style="font-family: monospace">3174019876543210</td>
+          <td>Jakarta Pusat</td>
+          <td>Menteng</td>
+          <td>081234567891</td>
+          <td>siti@email.com</td>
+          <td><span class="badge badge-success">Aktif</span></td>
+          <td>2025-12-20</td>
+          <td>
+            <div style="display: flex; gap: 5px">
+              <button class="btn-action" title="Detail">Detail</button>
+              <button class="btn-action delete" title="Hapus">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td style="font-weight: 600">Ahmad Fauzi</td>
+          <td style="font-family: monospace">3174011234567890</td>
+          <td>Jakarta Pusat</td>
+          <td>Menteng</td>
+          <td>081234567892</td>
+          <td>ahmad@email.com</td>
+          <td><span class="badge badge-success">Aktif</span></td>
+          <td>2026-01-05</td>
+          <td>
+            <div style="display: flex; gap: 5px">
+              <button class="btn-action" title="Detail">Detail</button>
+              <button class="btn-action delete" title="Hapus">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td style="font-weight: 600">Dewi Lestari</td>
+          <td style="font-family: monospace">3175025678901234</td>
+          <td>Jakarta Selatan</td>
+          <td>Setiabudi</td>
+          <td>081234567893</td>
+          <td>dewi@email.com</td>
+          <td><span class="badge badge-success">Aktif</span></td>
+          <td>2026-01-10</td>
+          <td>
+            <div style="display: flex; gap: 5px">
+              <button class="btn-action" title="Detail">Detail</button>
+              <button class="btn-action delete" title="Hapus">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td style="font-weight: 600">Eko Prasetyo</td>
+          <td style="font-family: monospace">3173013456789012</td>
+          <td>Jakarta Barat</td>
+          <td>Grogol Petamburan</td>
+          <td>081234567894</td>
+          <td>eko@email.com</td>
+          <td>
+            <span
+              class="badge badge-secondary"
+              style="background: #64748b; color: white"
+              >Tidak Aktif</span
+            >
+          </td>
+          <td>2025-11-25</td>
+          <td>
+            <div style="display: flex; gap: 5px">
+              <button class="btn-action" title="Detail">Detail</button>
+              <button class="btn-action delete" title="Hapus">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #64748b;
+    "
+  >
+    <span>Halaman 1 dari 1</span>
+    <div style="display: flex; gap: 5px">
+      <button
+        class="btn-icon"
+        style="
+          width: auto;
+          padding: 5px 10px;
+          background: #fff;
+          border: 1px solid #e2e8f0;
+          color: #000;
+        "
+        disabled
+      >
+        Sebelumnya
+      </button>
+      <button
+        class="btn-icon"
+        style="
+          width: auto;
+          padding: 5px 10px;
+          background: #fff;
+          border: 1px solid #e2e8f0;
+          color: #000;
+        "
+        disabled
+      >
+        Selanjutnya
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Info Validasi -->
+<div
+  class="chart-container"
+  style="
+    background: #fffbeb;
+    border: 1px solid #fef3c7;
+    padding: 20px;
+    margin-top: 24px;
+    box-shadow: none;
+  "
+>
+  <div style="display: flex; gap: 10px; align-items: start">
+    <i
+      class="fa-solid fa-circle-info"
+      style="color: #3b82f6; margin-top: 2px"
+    ></i>
+    <div>
+      <h5 style="font-size: 0.95rem; color: #b45309; margin-bottom: 5px">
+        Info Validasi NIK
+      </h5>
+      <p style="font-size: 0.85rem; color: #b45309; line-height: 1.5">
+        Sistem akan otomatis memvalidasi NIK yang diinput untuk mencegah
+        duplikasi data. NIK yang sudah terdaftar tidak dapat didaftarkan
+        kembali. Import data Excel juga akan melewati proses validasi NIK untuk
+        menjaga integritas database.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .btn-action {
+    padding: 4px 8px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: all 0.2s;
+  }
+  .btn-action:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+  }
+  .btn-action.delete:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #dc2626;
+  }
+</style>

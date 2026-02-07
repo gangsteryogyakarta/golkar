@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Pendaftaran Event Masyarakat - Partai Golkar</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="icon" href="assets/logo.png" />
+    <style>
+      body {
+        background-color: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow-y: auto;
+        padding: 40px 0;
+      }
+      .form-container {
+        width: 800px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e2e8f0;
+        overflow: hidden;
+        margin: auto;
+      }
+      .form-header {
+        background: #fffbeb;
+        padding: 30px;
+        border-bottom: 4px solid #ffd700;
+      }
+      .form-body {
+        padding: 30px;
+      }
+      .section-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .section-title i {
+        color: #e6c200;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .form-footer {
+        padding-top: 20px;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+      .btn-reset {
+        background: #fff;
+        border: 1px solid #cbd5e1;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        color: #64748b;
+      }
+      .btn-submit {
+        background: #ffd700;
+        border: none;
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        color: #000;
+        box-shadow: 0 2px 5px rgba(255, 215, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <!-- Header -->
+      <div class="form-header">
+        <h1
+          style="
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+          "
+        >
+          <i class="fa-regular fa-calendar-check" style="color: #f59e0b"></i>
+          Form Pendaftaran Event Masyarakat
+        </h1>
+        <p style="color: #64748b">
+          Daftar untuk mengikuti event Partai Golkar di wilayah Anda
+        </p>
+      </div>
+
+      <!-- Body -->
+      <div class="form-body">
+        <form
+          id="registrationForm"
+          onsubmit="
+            alert('Terima kasih! Pendaftaran Anda berhasil.');
+            return false;
+          "
+        >
+          <!-- Data Pribadi -->
+          <div class="section-title">
+            <i class="fa-regular fa-id-card"></i> Data Pribadi
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Nama Lengkap *</label>
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Masukkan nama lengkap"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">NIK (16 digit) *</label>
+              <input
+                type="text"
+                class="form-input"
+                placeholder="3174xxxxxxxxxxx"
+                required
+                maxlength="16"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email *</label>
+              <input
+                type="email"
+                class="form-input"
+                placeholder="email@example.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">No. WhatsApp *</label>
+              <input
+                type="tel"
+                class="form-input"
+                placeholder="08xxxxxxxxxx"
+                required
+              />
+            </div>
+          </div>
+
+          <hr
+            style="border: 0; border-top: 1px solid #f1f5f9; margin: 30px 0"
+          />
+
+          <!-- Data Wilayah -->
+          <div class="section-title">
+            <i class="fa-solid fa-location-dot"></i> Data Wilayah
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Provinsi *</label>
+              <select class="form-select" required>
+                <option value="" disabled selected>Pilih provinsi</option>
+                <option>DKI Jakarta</option>
+                <option>Jawa Barat</option>
+                <option>Banten</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kabupaten/Kota *</label>
+              <select class="form-select" required>
+                <option value="" disabled selected>Pilih kabupaten/kota</option>
+                <option>Jakarta Selatan</option>
+                <option>Jakarta Pusat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kecamatan *</label>
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Masukkan kecamatan"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kelurahan/Desa *</label>
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Masukkan kelurahan/desa"
+                required
+              />
+            </div>
+          </div>
+
+          <hr
+            style="border: 0; border-top: 1px solid #f1f5f9; margin: 30px 0"
+          />
+
+          <!-- Pilih Event -->
+          <div class="section-title">
+            <i class="fa-regular fa-calendar"></i> Pilih Event
+          </div>
+          <div class="form-group" style="margin-bottom: 20px">
+            <label class="form-label">Event *</label>
+            <select class="form-select" required id="eventSelect">
+              <option value="" disabled selected>
+                Pilih event yang akan diikuti
+              </option>
+              <option>Rapat Koordinasi DPD Jakarta</option>
+              <option>Sosialisasi Program Kerja</option>
+              <option>Bakti Sosial Kesehatan</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 20px">
+            <label class="form-label">Pesan/Pertanyaan (Opsional)</label>
+            <textarea
+              class="form-input"
+              rows="3"
+              placeholder="Tuliskan pesan atau pertanyaan Anda..."
+            ></textarea>
+          </div>
+
+          <div class="form-footer">
+            <button type="reset" class="btn-reset">Reset</button>
+            <button type="submit" class="btn-submit">Daftar Event</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Simple logic to pre-select event if query param exists
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventName = urlParams.get("event");
+        if (eventName) {
+          const select = document.getElementById("eventSelect");
+          // Basic select if matches exactly, otherwise default
+          for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].text === eventName) {
+              select.selectedIndex = i;
+              break;
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

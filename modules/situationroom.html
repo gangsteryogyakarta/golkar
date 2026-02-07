@@ -1,0 +1,106 @@
+<!-- Situation Room (Classic View) -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-label">Total Mention</div>
+    <div class="stat-value">2,543</div>
+    <div class="stat-trend text-success">
+      <i class="fa-solid fa-arrow-up"></i> +12%
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Sentiment Score</div>
+    <div class="stat-value">68%</div>
+    <div class="stat-trend text-success">
+      <i class="fa-solid fa-arrow-up"></i> +5%
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Potential Reach</div>
+    <div class="stat-value">1.2M</div>
+    <div class="stat-trend text-primary">
+      <i class="fa-solid fa-users"></i> Est.
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Crisis Alert</div>
+    <div class="stat-value" style="color: var(--danger)">3</div>
+    <div class="stat-trend text-danger">
+      <i class="fa-solid fa-triangle-exclamation"></i> Active
+    </div>
+  </div>
+</div>
+
+<div class="dashboard-main">
+  <div class="chart-container">
+    <div class="flex-between" style="margin-bottom: 20px">
+      <h3 style="font-size: 1rem; color: #1a1a1a">
+        Real-time Sentinel Overview
+      </h3>
+      <select
+        class="form-select"
+        style="width: auto; padding: 5px 10px; font-size: 0.85rem"
+      >
+        <option>Last 24 Hours</option>
+        <option>Last 7 Days</option>
+      </select>
+    </div>
+    <div style="flex: 1; position: relative">
+      <canvas id="mainChart"></canvas>
+    </div>
+  </div>
+
+  <div class="live-stream">
+    <div class="flex-between" style="margin-bottom: 20px">
+      <h3 style="font-size: 1rem; color: #1a1a1a">Live Monitor</h3>
+      <span class="live-indicator"
+        ><i class="fa-solid fa-circle fa-beat-fade"></i> LIVE</span
+      >
+    </div>
+    <div
+      class="stream-content"
+      id="streamList"
+      style="overflow-y: auto; flex: 1; padding-right: 5px"
+    >
+      <div class="stream-item positive">
+        <div class="stream-header">
+          <span><i class="fa-brands fa-twitter"></i> @GolkarJatim</span>
+          <span>2m</span>
+        </div>
+        Konsolidasi kader di Surabaya berjalan lancar. Semangat kuning menyala!
+        #GolkarMenang
+      </div>
+      <div class="stream-item negative">
+        <div class="stream-header">
+          <span><i class="fa-brands fa-facebook"></i> WargaSipil</span>
+          <span>5m</span>
+        </div>
+        Harga pupuk di desa kami masih tinggi, mohon perhatian wakil rakyat.
+      </div>
+      <div class="stream-item">
+        <div class="stream-header">
+          <span><i class="fa-solid fa-newspaper"></i> DetikNews</span>
+          <span>12m</span>
+        </div>
+        Golkar targetkan 20% kursi di parlemen pada pemilu mendatang.
+      </div>
+    </div>
+  </div>
+
+  <div class="map-container" style="grid-column: 1 / -1; height: 300px">
+    <h3
+      style="
+        font-size: 1rem;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        position: absolute;
+        z-index: 500;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 5px 10px;
+        border-radius: 4px;
+      "
+    >
+      Regional Heatmap
+    </h3>
+    <div id="map" style="height: 100%; width: 100%; z-index: 1"></div>
+  </div>
+</div>

@@ -1,0 +1,135 @@
+<!-- Reports View -->
+<div
+  style="
+    padding: 30px;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    height: 100%;
+  "
+>
+  <h2 style="font-size: 1.5rem; margin-bottom: 20px; color: #1a1a1a">
+    Executive Reports Center
+  </h2>
+  <p style="color: #64748b; margin-bottom: 30px">
+    Generate and download PDF reports for stakeholders.
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px">
+    <!-- Report Card -->
+    <div
+      style="
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: transform 0.2s;
+      "
+      onmouseover="this.style.transform = 'translateY(-5px)'"
+      onmouseout="this.style.transform = 'translateY(0)'"
+    >
+      <div
+        style="
+          height: 150px;
+          background: var(--primary-color);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <i
+          class="fa-solid fa-file-invoice"
+          style="font-size: 4rem; color: #fff"
+        ></i>
+      </div>
+      <div style="padding: 20px">
+        <h4 style="font-size: 1.1rem; margin-bottom: 5px">Daily Briefing</h4>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px">
+          24h sentiment analysis & top issues.
+        </p>
+        <button
+          class="btn-generate"
+          onclick="generateReport('Daily')"
+          style="width: 100%; padding: 10px; font-size: 0.9rem"
+        >
+          <i class="fa-solid fa-download"></i> Download PDF
+        </button>
+      </div>
+    </div>
+
+    <div
+      style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden"
+    >
+      <div
+        style="
+          height: 150px;
+          background: #334155;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <i
+          class="fa-solid fa-chart-pie"
+          style="font-size: 4rem; color: #fff"
+        ></i>
+      </div>
+      <div style="padding: 20px">
+        <h4 style="font-size: 1.1rem; margin-bottom: 5px">Weekly Strategy</h4>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px">
+          Strategy recommendation & competitor intel.
+        </p>
+        <button
+          class="btn-generate"
+          onclick="generateReport('Weekly')"
+          style="
+            width: 100%;
+            padding: 10px;
+            font-size: 0.9rem;
+            background: #f1f5f9;
+            color: #333;
+          "
+        >
+          <i class="fa-solid fa-download"></i> Download PDF
+        </button>
+      </div>
+    </div>
+
+    <div
+      style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden"
+    >
+      <div
+        style="
+          height: 150px;
+          background: #ef4444;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <i
+          class="fa-solid fa-triangle-exclamation"
+          style="font-size: 4rem; color: #fff"
+        ></i>
+      </div>
+      <div style="padding: 20px">
+        <h4 style="font-size: 1.1rem; margin-bottom: 5px">Crisis Logs</h4>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px">
+          Detailed logs of recent alerts and actions.
+        </p>
+        <button
+          class="btn-generate"
+          onclick="generateReport('Crisis')"
+          style="
+            width: 100%;
+            padding: 10px;
+            font-size: 0.9rem;
+            background: #f1f5f9;
+            color: #333;
+          "
+        >
+          <i class="fa-solid fa-download"></i> Download PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

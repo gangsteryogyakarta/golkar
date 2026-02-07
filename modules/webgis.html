@@ -1,0 +1,312 @@
+<!-- Header -->
+<div style="margin-bottom: 24px">
+  <h2
+    style="
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    "
+  >
+    WebGIS - Peta Sebaran Pemilih
+  </h2>
+  <p style="color: #64748b; font-size: 0.9rem">
+    Visualisasi geografis data pemilih dengan clustering dan heatmap
+  </p>
+</div>
+
+<div
+  class="dashboard-main"
+  style="grid-template-columns: 300px 1fr; gap: 24px; align-items: start"
+>
+  <!-- Sidebar Controls -->
+  <div class="chart-container" style="padding: 24px; height: 100%">
+    <h4
+      style="
+        font-size: 1rem;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      "
+    >
+      <i class="fa-solid fa-filter" style="color: #f59e0b"></i> Filter & Kontrol
+    </h4>
+
+    <div class="form-group" style="margin-bottom: 20px">
+      <label class="form-label" style="font-size: 0.85rem"
+        >Filter Wilayah</label
+      >
+      <select class="form-select" id="regionFilter">
+        <option value="all">Semua Wilayah</option>
+        <option value="jogja">Kota Yogyakarta</option>
+        <option value="sleman">Sleman</option>
+        <option value="bantul">Bantul</option>
+        <option value="gunungkidul">Gunung Kidul</option>
+        <option value="kulonprogo">Kulon Progo</option>
+      </select>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 30px">
+      <label class="form-label" style="font-size: 0.85rem">Tampilan Peta</label>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <button
+          class="btn-generate active"
+          id="btnClustering"
+          style="
+            justify-content: center;
+            width: 100%;
+            border: 1px solid #ffd700;
+          "
+        >
+          <i class="fa-solid fa-layer-group" style="margin-right: 8px"></i>
+          Clustering
+        </button>
+        <button
+          class="btn-reset"
+          id="btnHeatmap"
+          style="
+            justify-content: center;
+            width: 100%;
+            border: 1px solid #cbd5e1;
+            background: #fff;
+          "
+        >
+          <i
+            class="fa-solid fa-fire-flame-curved"
+            style="margin-right: 8px"
+          ></i>
+          Heatmap
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="stat-card"
+      style="
+        background: #fffbeb;
+        border: 1px solid #ffe4bf;
+        padding: 20px;
+        margin-bottom: 30px;
+      "
+    >
+      <div style="font-size: 0.8rem; color: #b45309; margin-bottom: 5px">
+        <i class="fa-solid fa-users"></i> Total Pemilih
+      </div>
+      <div style="font-size: 1.8rem; font-weight: 800; color: #b45309">
+        2.785.000
+      </div>
+      <div style="font-size: 0.75rem; color: #b45309">5 wilayah aktif</div>
+    </div>
+
+    <div>
+      <label
+        class="form-label"
+        style="font-size: 0.85rem; margin-bottom: 10px; display: block"
+        >Legenda Kepadatan</label
+      >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 8px;
+          font-size: 0.8rem;
+        "
+      >
+        <div
+          style="
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fcd34d;
+          "
+        ></div>
+        3.000 - 4.000
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 8px;
+          font-size: 0.8rem;
+        "
+      >
+        <div
+          style="
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #f59e0b;
+          "
+        ></div>
+        4.000 - 5.000
+      </div>
+      <div
+        style="display: flex; align-items: center; gap: 10px; font-size: 0.8rem"
+      >
+        <div
+          style="
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #b45309;
+          "
+        ></div>
+        5.000+
+      </div>
+    </div>
+  </div>
+
+  <!-- Map & Table -->
+  <div style="display: flex; flex-direction: column; gap: 24px">
+    <!-- Map Container -->
+    <div
+      class="chart-container"
+      style="padding: 0; overflow: hidden; height: 500px; position: relative"
+    >
+      <div
+        style="
+          padding: 15px 20px;
+          background: #fff;
+          border-bottom: 1px solid #e2e8f0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <h5
+            style="
+              font-size: 0.95rem;
+              font-weight: 700;
+              color: #1a1a1a;
+              margin-bottom: 2px;
+            "
+          >
+            <i
+              class="fa-solid fa-map-location-dot"
+              style="color: #f59e0b; margin-right: 5px"
+            ></i>
+            Peta Interaktif - Clustering View
+          </h5>
+          <p style="font-size: 0.8rem; color: #64748b">
+            Klik pada marker untuk melihat detail pemilih di wilayah tersebut
+          </p>
+        </div>
+        <div style="display: flex; gap: 5px">
+          <button
+            class="btn-icon"
+            style="width: 30px; height: 30px; font-size: 0.8rem"
+          >
+            +
+          </button>
+          <button
+            class="btn-icon"
+            style="width: 30px; height: 30px; font-size: 0.8rem"
+          >
+            -
+          </button>
+        </div>
+      </div>
+      <div id="webgis-map" style="width: 100%; height: 100%"></div>
+
+      <div
+        style="
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          background: rgba(255, 255, 255, 0.9);
+          padding: 15px;
+          border-radius: 8px;
+          max-width: 250px;
+          font-size: 0.75rem;
+          color: #0f172a;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+          z-index: 999;
+        "
+      >
+        <b>Info Peta:</b><br />
+        Clustering mengelompokkan pemilih berdasarkan wilayah dengan ukuran
+        proporsional terhadap jumlah pemilih.
+      </div>
+    </div>
+
+    <!-- Data Table -->
+    <div class="chart-container" style="padding: 0">
+      <div
+        class="tabs-container"
+        style="
+          margin: 20px 20px 0;
+          background: #fff;
+          border: 1px solid #e2e8f0;
+          padding: 2px;
+          border-radius: 8px;
+          width: fit-content;
+          min-width: auto;
+        "
+      >
+        <div
+          class="tab-item active"
+          style="padding: 6px 16px; font-size: 0.85rem"
+        >
+          Tabel Data
+        </div>
+        <div class="tab-item" style="padding: 6px 16px; font-size: 0.85rem">
+          Statistik
+        </div>
+      </div>
+
+      <div class="table-responsive" style="padding: 20px">
+        <table class="table table-sm">
+          <thead style="background: #fffbeb">
+            <tr>
+              <th>Wilayah</th>
+              <th class="text-end">Jumlah Pemilih</th>
+              <th class="text-end">Persentase</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kota Yogyakarta</td>
+              <td class="text-end">320.000</td>
+              <td class="text-end">11.5%</td>
+            </tr>
+            <tr>
+              <td>Sleman</td>
+              <td class="text-end">850.000</td>
+              <td class="text-end">30.5%</td>
+            </tr>
+            <tr>
+              <td>Bantul</td>
+              <td class="text-end">740.000</td>
+              <td class="text-end">26.6%</td>
+            </tr>
+            <tr>
+              <td>Gunung Kidul</td>
+              <td class="text-end">610.000</td>
+              <td class="text-end">21.9%</td>
+            </tr>
+            <tr>
+              <td>Kulon Progo</td>
+              <td class="text-end">265.000</td>
+              <td class="text-end">9.5%</td>
+            </tr>
+            <tr style="background: #fffcf2; font-weight: 700">
+              <td>Total</td>
+              <td class="text-end">2.785.000</td>
+              <td class="text-end">100%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

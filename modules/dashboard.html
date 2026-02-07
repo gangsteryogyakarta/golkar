@@ -1,0 +1,144 @@
+<!-- Dashboard Overview -->
+<div style="margin-bottom: 24px">
+  <h2
+    style="
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+    "
+  >
+    Dashboard Overview
+  </h2>
+  <p style="color: #64748b; font-size: 0.9rem">
+    Monitoring data dan aktivitas real-time
+  </p>
+</div>
+
+<!-- Stats Indicators -->
+<div class="stats-grid">
+  <!-- Card 1 -->
+  <div class="stat-card accent-left">
+    <div class="flex-between">
+      <div>
+        <div class="stat-label">Total Pemilih</div>
+        <div class="stat-value">23,800</div>
+        <div
+          class="stat-trend text-success"
+          style="padding: 0; background: none"
+        >
+          +12% dari bulan lalu
+        </div>
+      </div>
+      <div class="stat-icon-box">
+        <i class="fa-solid fa-users"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="stat-card accent-left">
+    <div class="flex-between">
+      <div>
+        <div class="stat-label">Event Aktif</div>
+        <div class="stat-value">20</div>
+        <div
+          class="stat-trend text-success"
+          style="padding: 0; background: none"
+        >
+          5 event minggu ini
+        </div>
+      </div>
+      <div class="stat-icon-box">
+        <i class="fa-regular fa-calendar"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="stat-card accent-left">
+    <div class="flex-between">
+      <div>
+        <div class="stat-label">Total Check-in</div>
+        <div class="stat-value">1,650</div>
+        <div class="stat-trend text-muted" style="padding: 0; background: none">
+          Event bulan ini
+        </div>
+      </div>
+      <div class="stat-icon-box">
+        <i class="fa-regular fa-circle-check"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="stat-card accent-left">
+    <div class="flex-between">
+      <div>
+        <div class="stat-label">KTA Terbit</div>
+        <div class="stat-value">18,450</div>
+        <div
+          class="stat-trend text-success"
+          style="padding: 0; background: none"
+        >
+          +320 minggu ini
+        </div>
+      </div>
+      <div class="stat-icon-box">
+        <i class="fa-solid fa-id-card-clip"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Middle Section: Bar Chart & Pie Chart -->
+<div
+  class="dashboard-main"
+  style="grid-template-rows: auto; margin-bottom: 24px"
+>
+  <!-- Region Bar Chart -->
+  <div class="chart-container" style="min-height: 350px">
+    <h3 style="font-size: 1rem; color: #1a1a1a; margin-bottom: 5px">
+      Sebaran Pemilih per Wilayah
+    </h3>
+    <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 20px">
+      Data akumulasi pemilih per kabupaten/kota
+    </p>
+    <div style="flex: 1; position: relative">
+      <canvas id="regionChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Demographics Pie Chart -->
+  <div class="chart-container" style="min-height: 350px">
+    <h3 style="font-size: 1rem; color: #1a1a1a; margin-bottom: 5px">
+      Demografi Pemilih
+    </h3>
+    <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 20px">
+      Distribusi berdasarkan usia
+    </p>
+    <div
+      style="
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <canvas id="demographicChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Section: Trend Line Chart -->
+<div class="chart-container" style="min-height: 350px">
+  <h3 style="font-size: 1rem; color: #1a1a1a; margin-bottom: 5px">
+    Tren Event & Kehadiran
+  </h3>
+  <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 20px">
+    Performa event 5 bulan terakhir
+  </p>
+  <div style="flex: 1; position: relative">
+    <canvas id="trendChart"></canvas>
+  </div>
+</div>
